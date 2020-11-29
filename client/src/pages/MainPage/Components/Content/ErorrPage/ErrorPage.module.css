@@ -1,0 +1,8 @@
+.errorContainer{
+    height: auto;
+    width: fit-content;
+    background-color: #ecad10;
+    padding: 20px;
+    margin: 0 auto;
+    border-radius: 0.5em;
+}

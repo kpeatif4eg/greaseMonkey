@@ -1,0 +1,27 @@
+.setCar{
+    margin: 5px auto;
+    width: 85%;
+}
+.form{
+    display: grid;
+    width: 50%;
+    margin: 0 auto;
+    grid-template-columns: 90% 10%;
+}
+.button{
+    background: transparent;
+    border-radius: 9px;
+    color: #ffffff;
+    height: 65%;
+    padding: 0px;
+    margin-top: .4em;
+    font-size: 13px;
+    border: 1px solid darkgrey;
+    line-height: 0px;
+}
+.wrapper{
+    position: absolute;
+    left: 50%;
+    transform: translate(-100%, 15px);
+	
+}

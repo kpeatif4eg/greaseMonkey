@@ -1,0 +1,48 @@
+
+.container {
+
+    border: 0.5px solid #bfbfbf;
+    border-radius: 100%;
+    background: linear-gradient(165deg, rgb(226, 226, 226) 0%, rgb(220, 220, 220) 40%, rgb(170, 170, 170) 98%, rgb(10, 10, 10) 100%);
+	position: relative;
+    box-shadow: 0px 0px 21px -5px;
+    margin: 0 auto;
+}
+.s{
+    font-size: 7px;
+    width: 30px;
+    height: 30px;
+}
+.m{
+    width: 90px;
+    height: 90px;
+}
+.l{
+    width: 120px;
+    height: 120px;
+}
+
+.text{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, 170%);
+}
+.loader:before {
+    position: absolute;
+    content: '';
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    border-bottom: 0px dashed #00000000;
+    box-shadow: 0 -10px 20px 20px #ffffff00 inset, 0 -5px 15px 10px #ffffff00 inset, 0 -2px 5px #ffffff inset, 0 -3px 2px #ffffffBB inset, 0 2px 0px #ffffff, 0 2px 3px #ffffff, 0 5px 5px #ffffff, 0 10px 15px #ffffff00, 0 10px 20px 20px #ffffff40;
+    filter: blur(3px);
+    animation: rotate 2s cubic-bezier(0.18, 1.34, 1, -1.22) infinite;
+}
+
+
+@keyframes rotate {
+	100% {
+		transform: rotate(360deg)
+	}
+}

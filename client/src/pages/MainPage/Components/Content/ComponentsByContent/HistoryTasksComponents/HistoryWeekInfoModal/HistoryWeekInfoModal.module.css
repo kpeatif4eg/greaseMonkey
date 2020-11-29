@@ -1,0 +1,93 @@
+
+.mVCar{
+    display: inline-block;
+    background-color: teal;
+    border-radius: 20px;
+    padding: 2px 4px;
+}
+.profit{
+    display: inline-block;
+    background-color: rgb(0, 128, 60);
+    border-radius: 20px;
+    padding: 2px 4px;
+}
+.mVCar, .profit{
+    margin: 2px 0;
+    text-align: center;
+}
+.weekListItem{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    background-color: #ffffff8f;
+    margin-bottom: 5px;
+    margin-top: 5px;
+    border-radius: 30px;
+    border: 1px solid #8a8484;
+    align-items: center;
+    padding: 1px 14px;
+    box-shadow: -1px 6px 10px -3px;
+}
+.infoItemContanier{
+    width: auto;
+}
+.percent{
+    color: #ffffff;
+    border-left: 3px solid #77ea14;
+    padding-left: 6px;
+
+}
+.symbol{
+    font-size: 10px;
+    vertical-align: super;
+}
+.detailBtn{
+    margin: 3px;
+    display: block;
+}
+.topCarTasks{
+    width: 100%;
+    margin: 7px 0 7px;
+    max-width: 270px;
+}
+.allCarsContainer, .topCarTasks{
+    background-color: #8aaf79;
+    overflow-y: scroll;
+    max-height: 200px;
+    min-width: 180px;
+    border-radius: 7%;
+    padding: 5px;
+    box-shadow: 0px 1px 10px 1px inset black;
+}
+.carList{
+
+}
+.mark{
+   
+    color: #ffffff;
+    text-decoration: underline;
+    display: inline-block;
+    border: 1px solid #005e60;
+    border-radius: 4px;
+    padding: 2px;
+    background-color: darkcyan;
+
+}
+.date{
+
+}
+.cost{
+    background: #a8a01f;
+    width: auto;
+    display: inline-block;
+    border-radius: 4px;
+    padding: 0 4px;
+    box-shadow: 1px 1px 4px 1px;
+}
+.listItem{
+    border-bottom: 1px solid #ffffff61;
+    border-top: 1px solid #ffffff61;
+    border-radius: 4%;
+    padding: 4px;
+    margin: 1px 0;
+}

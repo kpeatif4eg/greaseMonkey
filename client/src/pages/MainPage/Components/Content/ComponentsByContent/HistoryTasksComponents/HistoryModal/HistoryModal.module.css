@@ -1,0 +1,29 @@
+
+
+.modalContainer{
+    border: 1px solid;
+    position: absolute;
+    background: chartreuse;
+    overflow-y: scroll;
+    max-height: 70vh;
+    width: 80vw;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.headNav{
+    position: sticky;
+    top: 0px;
+    margin-top: -1px;
+    display: flex;
+    justify-content: space-between;
+    padding: 5px;
+    border-top: 1px solid;
+    background-color: rgba(0,0,0,.7);
+}
+.costNav{
+    color: #ffffff;
+    text-shadow: 1px 1px 3px black;
+    font-size: 21px;
+    font-weight: 900;
+}

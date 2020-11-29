@@ -1,0 +1,84 @@
+.buttonBlock{
+    background-color: #ff8c0054;
+    padding: 0 4%;
+}
+.title{
+    background: linear-gradient(270deg, #cecece00 -33%, #fff 91%);
+    margin: 4px 8px;
+    padding: 8px;
+    font-family: sans-serif;
+}
+.stickyTitle{
+    position: sticky;
+    transition: .4s;
+    top: 95px;
+    color: #ffffff;
+    background: linear-gradient(270deg, #cecece00 -33%, #d36d6d 50%);
+    z-index: 20;
+}
+.listTitle{
+    /* что-бы не подчеркивала VSCode */
+    position: static; 
+}
+.label{
+    color: royalblue;
+}
+.cost{
+    width: 60%;
+    height: 15px;
+    border: 1px solid lemonchiffon;
+    box-shadow: 0px 0px 4px 0px;
+    background-color: gainsboro;
+    font-weight: 600;
+    margin: 5px;
+}
+.checkboxContainer{
+    display: flex;
+    flex-direction: column;    
+    /* grid-template-columns: 1fr 1fr; */
+    background-color: #ff8c0054;
+    width: -moz-fit-content;
+    width: 100%;
+    text-align: left;
+}
+.list{
+    background-color: palegoldenrod;
+    padding-left: 1em;
+    padding-right: 1em;
+    margin-top: .5vh;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    grid-template-rows: 3fr 1fr;
+    border-bottom: 1px solid rgba(0,0,0,.16);
+    justify-content: space-around;
+}
+.checkAll ,.uncheckAll{
+    /* background: linear-gradient(transparent 100%, darkcyan 0%); */
+    border: none;
+    width: 50%;
+    box-shadow: 0px 2px 11px -3px;
+    border-bottom: 1px solid darkgreen;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    outline: none;
+
+}
+.subList{
+    background-color: #e2c9c9;
+    border-radius: 11%;
+    padding: 0 6px;
+    text-align: left;
+    border-left: 1px solid darksalmon;
+    border-right: 1px solid darksalmon;
+}
+.listComponent{
+    box-shadow: 0px 0px 24px -9px;
+    text-align: center;
+    /* position: absolute; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+}

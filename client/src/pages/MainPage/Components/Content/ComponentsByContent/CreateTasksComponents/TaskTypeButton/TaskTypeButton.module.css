@@ -1,0 +1,25 @@
+.button{
+    width: 5em;
+    height: 5em;
+    border: 1px solid #7781d3;
+    outline: none;
+    padding: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    border-radius: 0.3em;
+    box-shadow: 0 0 16px -2px #cbcbcb;
+    background-color: darkcyan;
+    animation: pulseBtn 2s infinite;
+}
+
+@keyframes pulseBtn {
+    0%{
+        border: 1px solid #7781d3;
+    }
+    50%{
+        border: 1px solid #a6a4a7c4;
+    }
+    100%{
+        border: 1px solid #7781d3;
+    }
+}

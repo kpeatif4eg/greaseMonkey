@@ -1,0 +1,27 @@
+.btnCount{
+    background-color: rebeccapurple;
+    border-radius: 50%;
+    display: block;
+    color: #ffffffff;
+    width: 15px;
+    height: 15px;
+    position: absolute;
+    top: -50%;
+    right: 0%;
+    transform: translate(60%);
+}
+
+.btn{
+    margin-left: auto;
+    margin-bottom: 5px;
+    margin-top: 5px;
+    margin-right: 6vw;
+    /* position: relative;
+    border: 1px solid rgba(255,255,255,0.2);
+    color: #ffffff;
+    border-radius: 5px;
+    padding: 9px 20px;
+    display: block;
+    box-shadow: 1px 1px 10px 1px #000000;
+    background-color: #6505A6; */
+}

@@ -1,0 +1,100 @@
+.modal{
+    width: 60vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #ffffff;
+    min-height: 5em;
+    background-color: #e55306;
+    position: absolute;
+    border-radius: 0.4em;
+    border: 2px solid #4d4d4d;
+    box-shadow: 2px 2px 25px 7px #000000;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+.title{
+    font-size: 15px;
+    line-height: 21px;
+    padding: 20px;
+    margin: 0;
+    text-align: center;
+}
+.content{
+    text-align: center;
+    margin-bottom: 25px;
+}
+.title, .content{
+    text-shadow: 1px 1px 2px #000000;
+}
+.modalBtnContainer{
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+}
+.modalBtn{
+    width: 40%;
+    margin-bottom: 20px;
+}
+.bg{
+    position: fixed;
+    z-index: 20;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,.3);
+}
+
+.fade_In_Out{
+    animation: fade-In-Out 2.5s forwards;
+}
+.fade_In{
+    animation: fade-in .4s ;
+}
+@keyframes fade-in{
+    0%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
+}
+@keyframes fade-In-Out{
+    0%{
+        opacity: 0;
+    }
+    10%{
+        opacity: 1;
+    }
+    20%{
+        opacity: 1;
+    }
+    30%{
+        opacity: 1;
+    }
+    40%{
+        opacity: 1;
+    }
+    50%{
+        opacity: 1;
+    }
+    60%{
+        opacity: 1;
+    }
+    70%{
+        opacity: 1;
+    }
+    80%{
+        opacity: 1;
+    }
+    90%{
+        opacity: 0.1;
+    }
+
+    100%{
+        opacity: 0;
+        display: none;
+    }
+}

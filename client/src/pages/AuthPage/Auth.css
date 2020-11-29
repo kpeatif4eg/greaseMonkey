@@ -1,0 +1,92 @@
+.input-field{
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    padding-bottom: 9px;
+}
+.form-wrapper{
+    background-image: url('https://static.vecteezy.com/system/resources/previews/000/110/348/non_2x/free-metal-texture-vector.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+    width: 100%;
+    border: 0.1px solid transparent;
+}
+.auth-form{
+    color:#ffffff;
+    border-radius: 8px;
+    text-align: center;
+    max-width: 500px;
+    width: 90%;
+    margin: 30px auto 10px;
+    background-color: #000000cf;
+    border: 1px solid gray;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    box-shadow: 6px 8px 22px 5px;
+}
+.authInput{
+    width: 60%;
+    margin: 9px auto;
+}
+.button-wrapper{
+    width: 70%;
+    margin: 0 auto;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-around;
+}
+.login-btn{
+    background-color: #123e3a !important;
+}
+.reg-btn{
+    background-color: #751f1f !important;
+}
+.message{
+    color: rgb(255, 255, 255);
+    text-align: center;
+    text-shadow: rgb(255, 0, 0) 1px 1px, rgb(255, 0, 0) 2px 0px;
+    font-size: 20px;
+}
+
+
+/* /////////// */
+.regInput{
+    display:block;
+    background-color: teal;
+    color:#ffffff;
+}
+
+.regModalBackground{
+    position: fixed;
+    background-color: #6c6c6ce8 ;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+.closeModal{
+    position: absolute;
+    right: 0;
+    top: 0;
+    border: 0;
+
+}
+.regModal{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    border: 2px solid #f2ecec3b;
+    box-shadow: 0 0 10px -3px black;
+    background-color: #ffffff40;
+    border-radius: 4px;
+    padding: 3px;
+    box-sizing: content-box;
+}
