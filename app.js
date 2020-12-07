@@ -2,6 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const config = require('config');
 const tasks = require('./tasksForList');
+const path = require('path');
 
 const app = express();
 
@@ -18,6 +19,12 @@ app.use('/api',require('./routes/checkLogin.routes'));
 app.use('/auto',require('./routes/auto.routes'));
 app.use('/api/user', require('./routes/user.routes'));
 
+if(process.env.NODE_ENV === 'production'){
+    app.use('/', express.static(path.join(__dirname,'client', 'build')));
+    app.get('*', (req,res)=>{
+        res.sendFile(path.resolve(__dirname,'client', 'build', 'index.html'))
+    })
+}
 app.get('/getList',(req, res)=>{
     res.status(200).json(tasks);
 });

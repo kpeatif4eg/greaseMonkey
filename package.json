@@ -4,10 +4,12 @@
   "description": "work manager for car mechanic",
   "main": "app.js",
   "scripts": {
-    "start": "node app.js",
+    "start": "cross-env NODE_ENV=production node app.js",
     "server": "nodemon app.js",
     "client": "npm run start --prefix client",
-    "dev": "concurrently \"npm run client\" \"npm run server \""
+    "client:install": "npm install --prefix client",
+    "client:build": "npm run build --prefix client",
+    "dev": " cross-env NODE_ENV=development concurrently \"npm run client\" \"npm run server \""
   },
   "author": "Mihail Mitsov",
   "license": "ISC",
