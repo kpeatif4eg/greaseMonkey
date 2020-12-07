@@ -2,7 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const config = require('config');
 const tasks = require('./tasksForList');
-
+const path = require('path');
 const app = express();
 
 const PORT = config.get('port');
@@ -21,6 +21,13 @@ app.use('/api/user', require('./routes/user.routes'));
 app.get('/getList',(req, res)=>{
     res.status(200).json(tasks);
 });
+if(process.env.NODE_ENV === 'production'){
+    app.use('/', express.static(path.join(__dirname, 'client', 'build')));
+    
+    app.get('*', (req,res)=>{
+        res.sendFile(path.resolve(__dirname,'client', 'build', 'index.html'))
+    })
+}
 
 const begin = async () => {
     try{
