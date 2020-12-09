@@ -3,7 +3,6 @@ import { v4 } from 'uuid';
 import { HistoryItem } from '../HistoryComponents/HistoryByDay/HistoryItem';
 import ModalContainer  from '../../../../Modal/ModalContainer'
 import stl from './HistoryModal.module.css';
-import { set } from 'mongoose';
 
 
 export const HistoryModal = props => {

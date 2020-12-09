@@ -1,5 +1,5 @@
 {
-    "port": 5001,
+    "port": 5000,
     "secretJWTKey": "mihail",
     "mongoUri":"mongodb+srv://mihail:qazwsxedc@cluster0-iragw.mongodb.net/test?retryWrites=true&w=majority",
     "salt": 12,

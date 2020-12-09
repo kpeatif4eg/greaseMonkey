@@ -1001,6 +1001,36 @@ const tasksForList = {
                 },
             ]
         }
+    },
+    diagnosticTasksGlobal:{
+        diagnostic:{
+            area: 'Диагностика',
+            tasks:[
+                {
+                    title:'Диагностика',
+                    showBtn:true,
+                    sides:[
+                        { side: { name: 'Диагностика ходовой', value: '', isChecked: false, cost: '' } },
+                        { side: { name: 'Компьютерная диагностика', value: '', isChecked: false, cost: '' } },
+                        { side: { name: 'Диагностика двигателя', value: '', isChecked: false, cost: '' } },
+                        { side: { name: 'Диагностика лако-красочного покрытия', value: '', isChecked: false, cost: '' } },
+                        { side: { name: 'Диагностика тормозной системы', value: '', isChecked: false, cost: '' } },
+                        { side: { name: 'Диагностика топливной системы', value: '', isChecked: false, cost: '' } },
+                    ]
+                },
+                {
+                    title:'Поиск неисправности',
+                    showBtn:true,
+                    sides:[
+                        { side: { name: 'Поиск течи моторного масла', value: '', isChecked: false, cost: '' } },
+                        { side: { name: 'Поиск течи антифриза', value: '', isChecked: false, cost: '' } },
+                        { side: { name: 'Поиск утечки фреона', value: '', isChecked: false, cost: '' } },
+                        { side: { name: 'Поиск течи топлива', value: '', isChecked: false, cost: '' } },
+                        { side: { name: 'Поиск гребаного стука в ходовой', value: '', isChecked: false, cost: '' } },
+                    ]
+                },
+            ]
+        },
     }
 }
 module.exports = tasksForList;

@@ -7,6 +7,15 @@ import { setChoosedTasks, sendingChoosedTasks, getTasks ,showModal, hideModal, s
 
 const DoneButtonContainer = props => {
     const { allTasks,choosedCar, setChoosed, sendChoosedTask, getTasks, delTask } = props;
+    
+    const onlyTasks = ({choosedTasks, error, isFetching, doneTasks, ...rest}) => {
+        const observeTasksArray = []
+        for( const key in rest){
+            observeTasksArray.push(rest[key])
+        }
+        return observeTasksArray
+    }
+        
         let sumCost = 0;
         let sumTaskCount = 0;
         let checkedOnce = true;
@@ -69,7 +78,7 @@ useEffect(()=>{
         }
         setChoosed(checkedTasksObj)
 
-    }, [allTasks.chassis, allTasks.engine, allTasks.electrical, allTasks.transmission])
+    }, onlyTasks(allTasks))
 
     const saveTasksToServer = () => {
         //отправляем выбранные работы на сервер

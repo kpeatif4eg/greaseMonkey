@@ -16,6 +16,7 @@ const initState = {
     electrical: {},
     maintain:{},
     attachmentEquip:{},
+    diagnostic:{},
     choosedTasks: { notRecurse: true },
     error: null,
     isFetching: false,
@@ -33,6 +34,7 @@ export const tasks = (state = initState, action) => {
                     transmission: payload.transmissionTasksGlobal,
                     maintain: payload.maintainTasksGlobal,
                     attachmentEquip: payload.attachmentsEquipmentGlobal,
+                    diagnostic: payload.diagnosticTasksGlobal,
                 };
 
         case START_REQUEST:

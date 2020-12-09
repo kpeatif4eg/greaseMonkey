@@ -9,6 +9,7 @@
     "axios": "^0.19.2",
     "lodash": "^4.17.15",
     "materialize-css": "^1.0.0",
+    "moment": "^2.29.1",
     "react": "^16.13.0",
     "react-dom": "^16.13.0",
     "react-materialize": "^3.5.9",
@@ -26,7 +27,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
-  "proxy": "http://localhost:5001",
+  "proxy": "http://localhost:5000",
   "eslintConfig": {
     "extends": "react-app"
   },
