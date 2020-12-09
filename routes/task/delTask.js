@@ -3,7 +3,6 @@ const Task = require('../../models/Task');
 
 module.exports = async (req, res) => {
     try {
-        console.log(req)
         if (!req.body.id) {
             return res.status(404).json({ message: 'id отсутствует' })
         }

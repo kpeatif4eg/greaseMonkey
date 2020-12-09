@@ -29,14 +29,12 @@ router.put('/updateUserInfo', authMdlw, async (req,res)=>{
             const candidate = await User.findOne({email: data.email});
 
             if(candidate && candidate.email !== data.email){
-                console.log(candidate, 'candidate')
                 return res.status(400).json({message: 'Емейл уже спользуется'})
             }
         }
        
 
         let user = await User.findOne({_id: req.user.userId});
-        console.log(data, 'user')
 
         if(data.passWord && bcrypt.compare(data.passWord, user.password)){
             if(data.pass1===data.pass2){
@@ -48,7 +46,6 @@ router.put('/updateUserInfo', authMdlw, async (req,res)=>{
         delete data.pass2;
         delete data.passWord;
 
-        console.log(data)
         // user = {...user, ...data,};
         await user.updateOne({...data});
 

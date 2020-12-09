@@ -16,7 +16,6 @@ router.post('/register',
     async (req, res)=>{
     try{
         const errors = validationResult(req);
-        console.log(req.body)
         if(!errors.isEmpty()){
             return res.status(400).json({ message:'Неверные данные', errors })
         }

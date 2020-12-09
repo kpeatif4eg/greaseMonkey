@@ -8,7 +8,6 @@ export const MainPageModal = props => {
     
     
     const comparePass = () =>{
-        console.log('work', props)
         const {pass} = props;
         if(pass.pass1 === pass.pass2 && !pass.pass1.length){
             return true

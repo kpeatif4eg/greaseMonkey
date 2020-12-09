@@ -23,7 +23,6 @@ const RouterContainer = props => {
 
         )
         httpRequest.interceptors.response.use(resolve=>{
-            console.log(resolve)
             if(resolve.data.message){
                 props.infoModal(resolve.data.message)
 
@@ -34,7 +33,6 @@ const RouterContainer = props => {
             return resolve
         },
         err=>{
-            console.log(err.response)
             if(err.response && err.response.status === 401){
                 props.logoutShowModal(err.response.data);
             }

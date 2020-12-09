@@ -106,14 +106,6 @@ export const AuthPage = (props) => {
                             onChange={formHandler}
                             placeholder='40% 50% 60%'
                         />
-                        <span>День выплат(номер дня недели)</span>
-                        <input
-                            type='number'
-                            name='paymentDay'
-                            className={'authInput'}
-                            onChange={formHandler}
-                            placeholder='4 5 6'
-                        />
 
                         <span>Выплантая неделя</span>
                         <select

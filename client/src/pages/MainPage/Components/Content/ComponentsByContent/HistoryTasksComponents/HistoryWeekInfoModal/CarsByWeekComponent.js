@@ -5,7 +5,6 @@ export const CarsByWeek = props => {
 
     const [isShowAllCars, setCars] = useState(false)
     const { info } = props;
-    console.log(props)
     return (
         <>
             <div className={stl.weekListItem}>

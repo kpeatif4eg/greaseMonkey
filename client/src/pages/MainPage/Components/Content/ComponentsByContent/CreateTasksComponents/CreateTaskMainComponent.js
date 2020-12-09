@@ -3,6 +3,8 @@ import { Switch, Route, Link, useRouteMatch, } from 'react-router-dom';
 import ChassisContainer from './AddTask/ChassisContainer';
 import EngineContainer from './AddTask/EngineContainer';
 import TransmissionContainer from './AddTask/TransmissionContainer';
+import MaintainContainer from './AddTask/MaintainTasksComponent';
+import AttachmentEquip from './AddTask/AttachmentEquipContainer';
 import { TaskTypeMenu } from './TaskTypeMenu/TaskTypeMenu';
 import SetCarContainer from './SetAutomobileComponent/SetCarContainer';
 import DoneButton from './DoneButton/DoneButtonContainer';
@@ -63,7 +65,12 @@ export const CreateTaskMainComponent = props => {
                 </Route>
                 <Route path={`${localPath}/technical-servicing`}>
 
-                    {'maintanence'}
+                    <MaintainContainer />
+
+                </Route>
+                <Route path={`${localPath}/addition-equip`}>
+
+                    <AttachmentEquip />
 
                 </Route>
             </Switch>

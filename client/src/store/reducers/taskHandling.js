@@ -14,22 +14,25 @@ const initState = {
     engine: {},
     transmission:{},
     electrical: {},
+    maintain:{},
+    attachmentEquip:{},
     choosedTasks: { notRecurse: true },
     error: null,
     isFetching: false,
     doneTasks: null,
 }
 
-
 export const tasks = (state = initState, action) => {
     const { type, payload } = action;
     switch (type) {
-
+        
         case SET_INIT_TASKLIST:
             return { ...state,
                     chassis: payload.chassisTasksGlobal,
                     engine: payload.engineTasksGlobal,
                     transmission: payload.transmissionTasksGlobal,
+                    maintain: payload.maintainTasksGlobal,
+                    attachmentEquip: payload.attachmentsEquipmentGlobal,
                 };
 
         case START_REQUEST:

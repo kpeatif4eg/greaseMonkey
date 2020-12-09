@@ -8,7 +8,6 @@ const AuthContainer = props => {
 
     const formHandler = (e) => {
         setForm({ ...form, [e.target.name]: e.target.value })
-        console.log(form)
     }
 
     const loginHandler = (prop) => {

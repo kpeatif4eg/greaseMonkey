@@ -43,6 +43,7 @@
     width: 100%;
     display: flex;
     position: sticky;
+    align-items: flex-start;
     top: 49px;
     background: #eaf3fa8f;
     border: 1px solid rgba(255, 255, 255, .2);
@@ -57,14 +58,14 @@
 }
 .topSideTitle{
     font-size: 24px;
+    text-overflow: ellipsis;
     background-color: #127dec;
+    overflow: hidden;
     color: #ffffff;
-    box-shadow: 3px 3px 12px -7px inset black;
     border-radius: 6px;
-    padding: 5px 31px;
-    line-height: 37px;
-    animation: titlePulse 4s ease-out infinite;
-    margin: 6px auto;
+    padding: 4px;
+    animation: CreateTask_titlePulse__3W9NM 4s ease-out infinite;
+    margin: 4px;
 }
 @keyframes titlePulse{
     0% {
