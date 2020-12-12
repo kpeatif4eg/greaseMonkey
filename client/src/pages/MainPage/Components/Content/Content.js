@@ -1,4 +1,4 @@
-import {useEffect} from 'react';
+import React, {useEffect} from 'react';
 
 export const ContentPage = props => {
     useEffect(()=>{
@@ -6,6 +6,10 @@ export const ContentPage = props => {
         props.setTaskList()
     },[])
     return(
-        props.children
+        <>
+        {console.log(props)}
+        {props.children}
+        
+        </>
     )
 }

@@ -9,6 +9,7 @@ import DiagnosticContainer from './AddTask/DiagnosticTaskComponent';
 import { TaskTypeMenu } from './TaskTypeMenu/TaskTypeMenu';
 import SetCarContainer from './SetAutomobileComponent/SetCarContainer';
 import DoneButton from './DoneButton/DoneButtonContainer';
+
 import stl from './CreateTask.module.css';
 
 export const CreateTaskMainComponent = props => {

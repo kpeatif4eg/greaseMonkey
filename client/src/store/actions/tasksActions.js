@@ -33,16 +33,33 @@ export const settingTaskList = () => {
     return dispatch => {
 
         dispatch( startRequest() );
+        const maxCount = 10;
+        const timeOut = 500;
+
+        const recurseRequest = (reqCount = 0) => {
+
+            getInitTasksAPI()
+            .then( res=>{
+
+                dispatch( setTaskList(res.data) );
+                dispatch( endRequest() );
+            })
+            .catch(err=>{
+                console.log(err)
+                if(reqCount <= maxCount){
+                    setTimeout(() => {
+                        recurseRequest(reqCount+=1)
+                    }, timeOut);
+                } else {
+                    dispatch( setError() )
+                    dispatch( endRequest() );
+
+                }
+                
+            });
+        }
+        recurseRequest()
         
-        getInitTasksAPI()
-        .then( res=>{
-            dispatch( setTaskList(res.data) );
-            dispatch( endRequest() );
-        })
-        .catch(err=>{
-            dispatch( setError() )
-            dispatch( endRequest() );
-        });
     }
 }
 

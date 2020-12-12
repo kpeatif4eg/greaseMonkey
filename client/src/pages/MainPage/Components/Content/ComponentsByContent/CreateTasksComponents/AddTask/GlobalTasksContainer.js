@@ -1,6 +1,9 @@
 import React from  'react';
+import {connect} from 'react-redux'
 import {AddTaskComponent} from './AddTasksComponent';
-import {ErrorPage} from '../../../ErorrPage/ErrorPage';
+import ErrorPage from '../../../ErorrPage/ErrorPage';
+import {Loader} from '../../../../Loader/Loader';
+
 
 
 const Global = props => {
@@ -41,6 +44,8 @@ const Global = props => {
     }
     if(props.error){
         return (<ErrorPage error={props.error} />)
+    } else if( props.isLoadTasks){
+        return <Loader size='l'/>
     }
     return (
         <AddTaskComponent {...props.area} 
@@ -52,5 +57,8 @@ const Global = props => {
     )
 };
 
+const mapState = state =>({
+    isLoadTasks: state.tasks.isFetching,
+})
 
-export default(Global)
+export default connect(mapState)(Global)
