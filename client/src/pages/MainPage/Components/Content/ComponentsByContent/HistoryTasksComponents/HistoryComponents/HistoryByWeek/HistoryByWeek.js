@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import {WeekItems} from './HistoryWeekItems';
 
 
@@ -15,7 +15,6 @@ export const HistoryByWeek = props => {
             last: arr[arr.length - 1]
         }
     }
-
     return props.doneTasks && props.doneTasks.type === 'week' 
         ? 
         <div className={'date_container'}>
@@ -26,7 +25,8 @@ export const HistoryByWeek = props => {
             }
         </div>
         :
-        'Пусто'
+        <span>{''}</span>
+       
 }
 
 const Week = props => {

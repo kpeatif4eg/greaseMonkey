@@ -3,5 +3,5 @@
     "secretJWTKey": "mihail",
     "mongoUri":"mongodb+srv://mihail:qazwsxedc@cluster0-iragw.mongodb.net/test?retryWrites=true&w=majority",
     "salt": 12,
-    "tokerExpired": "6h"
+    "tokerExpired": "168h"
 }

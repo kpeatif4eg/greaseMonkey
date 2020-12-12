@@ -5,16 +5,25 @@ import stl from '../History.module.css';
 
 export const WeekItems = props => {
     
-    const checkFirstDay = (days) => {
+    const checkFirstDay = (days, index) => {
         const firstDay = days && days.filter((fItem, i) => {
             return (moment(fItem.date).format('DD') === '01');
         })
-        return firstDay.length ? moment(firstDay[0].date).format('MMMM') : null
+        if (firstDay.length){
+            return moment(firstDay[0].date).format('MMMM')
+        } else if ( !index ){
+            return moment(days[0].date).format('MMMM')
+        } else {
+            return null
+        }
+        
+      
     }
     return props.payload.map((item, i) => {
         return <OneWeek {...props} item={item} i={i} checkFirstDay={checkFirstDay} />
     })
 }
+
 
 
 
@@ -33,8 +42,8 @@ const OneWeek = props => {
         <div key={i} className={stl.dateItemWeek}>
 
             {
-                <div>
-                    {checkFirstDay(item)}
+                <div className={checkFirstDay(item, i) && stl.monthName}>
+                    {checkFirstDay(item, i)}
                 </div>
 
             }

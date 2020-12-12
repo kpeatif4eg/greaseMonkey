@@ -28,11 +28,13 @@ module.exports = async (req, res) => {
 
         if (req.body.data && req.body.data === 'week') {
             moment.locale('ru')
-
             tasks = await Task.find({ owner: req.user.userId }).sort(({ date: 1 }));
 
             if(!tasks.length){
-                return res.status(404).json({message: 'Работ пока нет'})
+                return res.status(404).json({
+                    message: 'Работ пока нет',
+                    type: 'week',
+                })
             }
 
             const user = await User.findOne({_id: req.user.userId});
@@ -43,7 +45,7 @@ module.exports = async (req, res) => {
 
             let firstTimeDate = moment(tasks[0].date).format(formatTmplt);
             let lastTimeDate = moment(tasks[tasks.length - 1].date).format(formatTmplt);
-
+            
             if(!firstWeekDayFlag){
                 if (moment(lastTimeDate).format('dd') !== 'вс') {
                     lastTimeDate = moment(lastTimeDate).endOf('week');
@@ -54,8 +56,29 @@ module.exports = async (req, res) => {
             } else {
                 if(firstWeekDayFlag){
                     const dayIndex = compareDay(firstWeekDayFlag);
-                    firstTimeDate = moment(firstTimeDate).startOf('week').add(dayIndex.start, 'days');
 
+                    console.log(firstTimeDate)
+                    console.log(dayIndex)
+
+                    firstTimeDate = (
+                        //если первый день помечен как "с работами"
+                        //**firstTimeDate
+                        // и он оказывается раньше
+                        // приведенного к графику выплат дня 
+                        //**moment(firstTimeDate).startOf('week').add(dayIndex.start, 'days'))
+                        //то откатываем одну неделю назад
+                        moment(moment(firstTimeDate).startOf('week').add(dayIndex.start, 'days')).isAfter(firstTimeDate)
+                        ?
+                        moment(firstTimeDate).startOf('week').subtract(1, 'week').add(dayIndex.start, 'days')
+                        :
+                        moment(firstTimeDate).startOf('week').add(dayIndex.start, 'days')
+
+
+                    );
+
+                    if(moment().isAfter(lastTimeDate)){
+                        lastTimeDate = moment();
+                    }
                     lastTimeDate = moment(lastTimeDate).endOf('week').add(dayIndex.end, 'days');
                 }
             } 
@@ -118,7 +141,7 @@ module.exports = async (req, res) => {
                 innerArr.push(item);
                 return acc;
             }, {})
-
+            
             return res.status(200).json(
                 {
                     payload: slicedBySevenDay.week,
