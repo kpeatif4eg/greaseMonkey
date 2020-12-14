@@ -16,7 +16,6 @@ import {
     H_UPDATE_RESP,
 
 } from '../actionTypes'
-import { tasks } from './taskHandling';
 
 
 const initState = {

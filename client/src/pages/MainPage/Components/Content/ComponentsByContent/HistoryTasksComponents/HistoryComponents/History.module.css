@@ -111,7 +111,7 @@
     list-style: none;
     margin: 10px 10px;
     padding: 12px;
-    background-image: linear-gradient(128deg, #097fa1 24%, #d1d1d100 68%), url(/static/media/image2.844b3904.svg);
+    background-image: linear-gradient(128deg, #097fa1 24%, #d1d1d100 68%), url('../imgs/image2.svg');
     background-repeat: no-repeat;
     background-size: 100%, 20%;
     background-position: 0%, 100% 90%;

@@ -58,6 +58,7 @@ const Global = props => {
 };
 
 const mapState = state =>({
+    tasks: state.tasks,
     isLoadTasks: state.tasks.isFetching,
 })
 

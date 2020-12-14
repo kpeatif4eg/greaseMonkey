@@ -10,6 +10,8 @@ const RouterContainer = props => {
     useEffect(()=>{
         props.saveToLocalStor();
 
+        //отправляем со всеми запросами токен для аутентификации
+
         httpRequest.interceptors.request.use(cfg=>{
             const token = localStorage.getItem(localStorageToken);
             if (token) {
@@ -18,12 +20,17 @@ const RouterContainer = props => {
             return cfg
         },
         err=>{
+            
             return Promise.reject(err)
         }
 
         )
         httpRequest.interceptors.response.use(resolve=>{
+            
             if(resolve.data.message){
+
+            // если ответ содержит свойство 'message' выбрасываем модалку с сообщением
+
                 props.infoModal(resolve.data.message)
 
                 setTimeout(() => {
@@ -33,6 +40,9 @@ const RouterContainer = props => {
             return resolve
         },
         err=>{
+
+        //перехватчик для логаута когда токен закончился
+
             if(err.response && err.response.status === 401){
                 props.logoutShowModal(err.response.data);
             }

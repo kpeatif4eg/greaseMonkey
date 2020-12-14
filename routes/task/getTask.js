@@ -129,15 +129,6 @@ module.exports = async (req, res) => {
                     return acc;
                 }
 
-                // if(item.haveBeenTasks){
-                //     // если в текущем елементе есть выполненные работы суммируем их стоимость
-                //        acc.sumCost =  acc.sumCost ? acc.sumCost : 0;
-                //        const sumTask =  item.haveBeenTasks.reduce((acc2, item2, i) => {
-                //            return acc2 += +item2.tasks.data.totalCost;
-                            
-                //         },0)
-                //         acc.sumCost += sumTask;
-                //     }
                 innerArr.push(item);
                 return acc;
             }, {})

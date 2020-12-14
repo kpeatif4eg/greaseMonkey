@@ -4,7 +4,6 @@ import stl from '../History.module.css';
 
 
 export const WeekItems = props => {
-    
     const checkFirstDay = (days, index) => {
         const firstDay = days && days.filter((fItem, i) => {
             return (moment(fItem.date).format('DD') === '01');
@@ -73,7 +72,7 @@ const WeekDay = props => {
 
             <div
                 key={props.date}
-                style={{ border:` 1px solid ${props.day.format('dd') === 'вс' ? '#855050' : null}` }}
+                style={{ backgroundColor:`${props.day.format('dd') === 'вс' ? 'darkred': null}` }}
                 className={`${stl.dayWeek} ${props.haveBeenTasks && props.haveBeenTasks.length ? stl.checkedDay : ''} ${today === props.date ? stl.todayDay : ''}`}
             >
                 <span style={{ fontSize: '10px',}}>{props.day.format('dd')}</span>

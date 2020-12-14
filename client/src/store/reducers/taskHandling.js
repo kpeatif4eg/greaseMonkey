@@ -35,6 +35,7 @@ export const tasks = (state = initState, action) => {
                     maintain: payload.maintainTasksGlobal,
                     attachmentEquip: payload.attachmentsEquipmentGlobal,
                     diagnostic: payload.diagnosticTasksGlobal,
+                    error: null,
                 };
 
         case START_REQUEST:

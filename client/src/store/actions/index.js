@@ -1,14 +1,19 @@
 import { login, registration, logout, logoutModal, logoutCloseModal, infoCloseModal,infoModal } from './authActions';
 import { saveToLocalStorage, } from './localStorageActions';
 import {
-    settingTaskList,
     setTaskOptions,
+    setTaskForChange,
     setChoosedTasks,
+
+
+} from './tasksActions';
+import {
+    settingTaskList,
     sendingChoosedTasks,
     getTasks,
     getTaskById,
-    setTaskForChange
-} from './tasksActions';
+} from './asyncActions/asyncTasks';
+
 import { settingAutomobileList, settingMark, setMark, setModel } from './automobileActions';
 import { hideModal, showModal,setTaskMenuTitle } from './commonActions';
 import {
