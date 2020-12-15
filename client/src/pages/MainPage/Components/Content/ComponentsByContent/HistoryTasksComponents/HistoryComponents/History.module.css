@@ -183,7 +183,8 @@
 }
 
 .checkedDay{
-    background-color: #4fc14d;
+    border: 1px solid #ebff00 !important;
+    box-shadow: 0 0 5px 2px #ff0000;
 }
 .todayDay:before{
     content: '';
