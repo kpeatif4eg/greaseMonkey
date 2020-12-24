@@ -1,9 +1,13 @@
 {
-    "port": 5000,
+    "portDev": 5000,
+    "portProd": 80,
     "secretJWTKey": "mihail",
     "mongoUri":"mongodb+srv://mihail:qazwsxedc@cluster0-iragw.mongodb.net/test?retryWrites=true&w=majority",
     "salt": 12,
     "tokerExpired": "168h",
     "projMail": "mihaker011@ukr.net",
-    "projMailPass": "bG6j2OiNpX4cYyja"
+    "projMailPass": "bG6j2OiNpX4cYyja",
+    "restorePathDev": "http://localhost:3000/restore",
+    "restorePathProd":"http://grmonkey.site/restore"
+    
 }

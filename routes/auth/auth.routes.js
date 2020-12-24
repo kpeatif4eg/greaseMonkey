@@ -110,7 +110,9 @@ router.post('/forgetPass', async (req, res) => {
             from: `grmonkey.site <${config.get('projMail')}>`,
             to: `${email}`,
             subject: 'Восстановление пароля',
-            html: `http://localhost:3000/restore/${token}`,
+            html: `${config.get(
+                process.env.NODE_ENV === 'production' ? 'restorePathProd' : 'restorePathDev'
+            )}/${token}`,
         };
 
         transporter.sendMail(mailOptions, (err, info) => {

@@ -5,7 +5,7 @@ const tasks = require('./tasksForList');
 const path = require('path');
 const app = express();
 
-const PORT = config.get('port');
+const PORT = process.env.NODE_ENV === 'production' ? config.get('portProd') : config.get('portDev');
 const mongoUri = config.get('mongoUri')
 
 app.use(express.json({extended: true}));
