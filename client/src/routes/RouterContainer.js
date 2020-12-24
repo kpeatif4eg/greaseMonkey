@@ -1,15 +1,16 @@
 import React, {useEffect} from 'react';
-import {Router} from './routes';
 import {connect} from 'react-redux';
+import {useHistory} from 'react-router-dom'
 import {saveToLocalStorage} from '../store/actions/localStorageActions';
 import { logout,logoutModal,logoutCloseModal,infoModal, infoCloseModal } from '../store/actions';
 import { localStorageToken } from '../configs/config'
+import {Router} from './routes';
 import {httpRequest} from '../utils/API';
 
 const RouterContainer = props => {
+    const history = useHistory();
     useEffect(()=>{
         props.saveToLocalStor();
-
         //отправляем со всеми запросами токен для аутентификации
 
         httpRequest.interceptors.request.use(cfg=>{
@@ -28,23 +29,31 @@ const RouterContainer = props => {
         httpRequest.interceptors.response.use(resolve=>{
             
             if(resolve.data.message){
-
             // если ответ содержит свойство 'message' выбрасываем модалку с сообщением
 
                 props.infoModal(resolve.data.message)
 
                 setTimeout(() => {
                     props.infoCloseModal()
-                }, (4000));
+                }, (2000));
             }
             return resolve
         },
         err=>{
 
+            if(err.response.data.message){
+                props.infoModal(err.response.data.message);
+
+                setTimeout(() => {
+                    props.infoCloseModal()
+                }, (2000));
+            }
+
         //перехватчик для логаута когда токен закончился
 
             if(err.response && err.response.status === 401){
                 props.logoutShowModal(err.response.data);
+                history.push('/')
             }
             return Promise.reject(err);
         

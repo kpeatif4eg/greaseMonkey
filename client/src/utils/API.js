@@ -31,4 +31,6 @@ export const getUserInfo = id => httpRequest.post('/user/getUserInfo', {data: id
 
 export const updateUserInfo = idAndData => httpRequest.put('/user/updateUserInfo', {data: idAndData});
 
-export const getWorkDaysPerRange = dayRange => httpRequest.post('/task/getDetailsPerRange', { data: dayRange })
+export const getWorkDaysPerRange = dayRange => httpRequest.post('/task/getDetailsPerRange', { data: dayRange });
+
+export const rewritePass = ({pass, token}) => httpRequest.post('auth/restorePass', {data: {pass, token}})

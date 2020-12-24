@@ -183,8 +183,21 @@
 }
 
 .checkedDay{
-    border: 1px solid #ebff00 !important;
-    box-shadow: 0 0 5px 2px #ff0000;
+    will-change: contents;
+    /* border: 1px solid #d7d1d1 !important; */
+    box-shadow: 0px 4px 2px -1px #61f11b, 0px 6px 3px -1px black;
+    animation: checkedDayPulse 2.3s ease-in-out infinite;
+}
+@keyframes checkedDayPulse{
+    0% {
+        box-shadow: 0px 4px 2px -1px #61f11b, 0px 6px 3px -1px black;
+    }
+    50% {
+        box-shadow: 0px 0px 2px -1px #61f11b, 0px 6px 3px -1px black;
+    }
+    100% {
+        box-shadow: 0px 4px 2px -1px #61f11b, 0px 6px 3px -1px black;
+    }
 }
 .todayDay:before{
     content: '';

@@ -16,6 +16,17 @@ export const DoneButton =props => {
             {/* <span className={stl.btnCount}>1</span> */}
         
         </button>
+
+
+        {/* //// */}
+        <button onClick={
+            ()=>{
+                fetch('/api/user/testEmail')
+            }
+        }>TEST</button>
+        {/* /// */}
+
+
         {
             isShowModal && <Modal message={messageForModal} description={descriptionforModal} okButton={()=>hideModal()} />
         }

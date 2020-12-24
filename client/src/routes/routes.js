@@ -6,18 +6,37 @@ import ContentContainer from '../pages/MainPage/Components/Content/ContentContai
 import CreateTaskContainer  from '../pages/MainPage/Components/Content/ComponentsByContent/CreateTasksComponents/CreateTaskContainer'
 import HistoryContainer from '../pages/MainPage/Components/Content/ComponentsByContent/HistoryTasksComponents/HistoryContainer'
 // import { Footer } from '../pages/MainPage/Components/Footer/Footer';
+import RestorePass from '../pages/RestorePassword/RestorePassContainer'
 import  ModalContainer  from '../pages/MainPage/Components/Modal/ModalContainer'
 import  MainPageContainer from '../pages/MainPage/Components/Content/ComponentsByContent/MainPageTasksComponents/MainPageContainer';
 
 
 export const Router = (props) => {
     if (!props.token || !props.hideAuth) {
-        return (
+        return (<>
             <Switch>
-                <Route path='/' >
+                <Route path='/' exact >
                     <AuthPage />
                 </Route>
+                
+                
+               <Route path='/restore/:token'>
+                   <RestorePass/>
+               </Route>
+               
+                <Route path='/'  >
+                    <Redirect to='/' />
+                </Route>
             </Switch>
+             {
+                (props.isShowModal || props.isShowInfoModal)
+                && <ModalContainer 
+                    {...props.message}
+                    message={props.logoutMessage ||props.infoMessage}
+                    okButton={!props.infoMessage && props.okHandler}
+                />
+            }
+            </>
         )
     }
     return (

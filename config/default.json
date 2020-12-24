@@ -3,5 +3,7 @@
     "secretJWTKey": "mihail",
     "mongoUri":"mongodb+srv://mihail:qazwsxedc@cluster0-iragw.mongodb.net/test?retryWrites=true&w=majority",
     "salt": 12,
-    "tokerExpired": "168h"
+    "tokerExpired": "168h",
+    "projMail": "mihaker011@ukr.net",
+    "projMailPass": "bG6j2OiNpX4cYyja"
 }

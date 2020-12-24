@@ -1,5 +1,9 @@
-import { login, registration, logout, logoutModal, logoutCloseModal, infoCloseModal,infoModal } from './authActions';
+import { logoutModal, logoutCloseModal, infoCloseModal, infoModal } from './authActions';
+
+import {login, registration, logout, sendEmail} from './asyncActions/asyncAuth';
+
 import { saveToLocalStorage, } from './localStorageActions';
+
 import {
     setTaskOptions,
     setTaskForChange,
@@ -7,6 +11,7 @@ import {
 
 
 } from './tasksActions';
+
 import {
     settingTaskList,
     sendingChoosedTasks,
@@ -15,7 +20,9 @@ import {
 } from './asyncActions/asyncTasks';
 
 import { settingAutomobileList, settingMark, setMark, setModel } from './automobileActions';
-import { hideModal, showModal,setTaskMenuTitle } from './commonActions';
+
+import { hideModal, showModal, setTaskMenuTitle } from './commonActions';
+
 import {
     setHistCOst,
     setHistDate,
@@ -32,12 +39,13 @@ import {
     delHistSide,
     updateTask,
     deleteTask,
-    
 } from './historyModalChangeActions'
 
-import {gettingUserInfo, changeUserInfo, changingUserInfo} from './userAcions'
+import {updatePassword} from './asyncActions/asyncRestorePass'
 
-import { settingHistoryDetails,setHistoryDatails } from './historyModalWeekDetails';
+import { gettingUserInfo, changeUserInfo, changingUserInfo } from './userAcions'
+
+import { settingHistoryDetails, setHistoryDatails } from './historyModalWeekDetails';
 
 export {
     login,
@@ -81,5 +89,7 @@ export {
     infoModal,
     settingHistoryDetails,
     setHistoryDatails,
-    setTaskMenuTitle
+    setTaskMenuTitle,
+    sendEmail,
+    updatePassword,
 };

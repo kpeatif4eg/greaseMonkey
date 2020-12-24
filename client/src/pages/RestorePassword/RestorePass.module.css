@@ -1,0 +1,16 @@
+.form{
+    width: 40%;
+    background-color: brown;
+    color: #ffffff;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, 40%);
+    padding: 8px;
+}
+.input{
+    background-color: burlywood;
+    width: 80%;
+    border: 1px solid #fff2;
+    border-radius: 3px;
+    margin: 5px;
+}

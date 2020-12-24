@@ -12,11 +12,10 @@ app.use(express.json({extended: true}));
 
 
 
-app.use('/api/auth', require('./routes/auth.routes'));
+app.use('/api/auth', require('./routes/auth/auth.routes'));
 app.use('/api/task', require('./routes/task/task.routes'));
-app.use('/api',require('./routes/checkLogin.routes'));
-app.use('/auto',require('./routes/auto.routes'));
-app.use('/api/user', require('./routes/user.routes'));
+app.use('/auto', require('./routes/automobile/auto.routes'));
+app.use('/api/user', require('./routes/user/user.routes'));
 
 app.get('/getList',(req, res)=>{
     res.status(200).json(tasks);

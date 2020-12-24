@@ -1,7 +1,7 @@
 const {Router} = require('express');
-const Auto  = require('../models/Auto');
+const Auto  = require('../../models/Auto');
 // const authMdlw = require('../middleware/auth.middleware');
-const db = require('../autoDB.json');
+const db = require('../../autoDB.json');
 
 
 const router = Router();

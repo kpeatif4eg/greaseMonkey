@@ -50,6 +50,7 @@ export const WeekItems = props => {
 
     return props.payload.map((item, i) => {
         return <OneWeek 
+            key={i}
             {...props}
             item={item}
             i={i}
@@ -90,7 +91,7 @@ const OneWeek = props => {
 
                         const day = moment(dateItem.date);
                         return (
-                            <WeekDay {...dateItem} day={day} colorGen={props.colorGen} />
+                            <WeekDay key={day} {...dateItem} day={day} colorGen={props.colorGen} />
                         )
                     })
                 }

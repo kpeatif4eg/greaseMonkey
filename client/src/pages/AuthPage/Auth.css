@@ -34,11 +34,18 @@
     margin: 9px auto;
 }
 .button-wrapper{
+    flex-wrap: wrap;
     width: 70%;
     margin: 0 auto;
     margin-bottom: 20px;
     display: flex;
     justify-content: space-around;
+}
+.login-btn, .reg-btn{
+    color: #ffffff;
+    border: 2px solid;
+    border-radius: 4px;
+    padding: 2px 18px;
 }
 .login-btn{
     background-color: #123e3a !important;
@@ -46,13 +53,22 @@
 .reg-btn{
     background-color: #751f1f !important;
 }
+.forgetButton{
+    margin-top: 10px;
+    display: block;
+    width: 50%;
+    background: transparent;
+    color: #ffffff;
+    border: 0;
+    text-shadow: 0 0 5px #f6e4e4;
+    font-weight: bold;
+}
 .message{
     color: rgb(255, 255, 255);
     text-align: center;
     text-shadow: rgb(255, 0, 0) 1px 1px, rgb(255, 0, 0) 2px 0px;
     font-size: 20px;
 }
-
 
 /* /////////// */
 .regInput{

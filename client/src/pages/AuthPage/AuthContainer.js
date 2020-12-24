@@ -1,7 +1,8 @@
 import React,{useState} from 'react';
 import { AuthPage } from './AuthPage'
 import {connect} from 'react-redux';
-import {login, registration} from '../../store/actions';
+import {login, registration, sendEmail} from '../../store/actions';
+
 
 const AuthContainer = props => {
     const [form, setForm] = useState({ email: '', password: '', paymentRange:'пн-сб'});
@@ -23,6 +24,7 @@ const AuthContainer = props => {
             formHandler={formHandler}
             loginHandler={loginHandler}
             registrationHandler={registrationHandler}
+            sendPassToMail={props.sendPassToMail}
             isFetching={props.isFetching}
         />
     )
@@ -34,7 +36,9 @@ const mapState = state => ({
 const mapDispatch = dispatch =>(
     {
         loginStore: payload => dispatch( login(payload) ),
-        registration: payload => dispatch( registration(payload) )
+        registration: payload => dispatch( registration(payload) ),
+        sendPassToMail: (payload) => dispatch(sendEmail(payload))
+
     }
 )
 

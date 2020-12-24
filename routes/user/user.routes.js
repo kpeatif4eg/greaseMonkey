@@ -1,7 +1,7 @@
 const {Router} = require('express');
 const bcrypt = require('bcryptjs');
-const User = require('../models/User');
-const authMdlw = require('../middleware/auth.middleware');
+const User = require('../../models/User');
+const authMdlw = require('../../middleware/auth.middleware');
 const config = require('config');
 
 
@@ -18,6 +18,8 @@ router.post('/getUserInfo', authMdlw ,async(req, res)=>{
         console.log(e)
     }
 });
+
+
 
 router.put('/updateUserInfo', authMdlw, async (req,res)=>{
     try{

@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { RegistartionForm } from './RegistrationForm';
+import { RestoreAccount } from './RestoreAccount';
 import "./Auth.css";
 
 
@@ -6,7 +8,8 @@ export const AuthPage = (props) => {
     const { formHandler, loginHandler, registrationHandler } = props;
     const { isFetching, message } = props;
 
-    const [showModal, setModal] = useState(false)
+    const [showRegisterModal, setRegisterModal] = useState(false);
+    const [showRestoreModal, setRestoreModal] = useState(false);
 
     const formHadler = (e) => {
         e.preventDefault();
@@ -20,7 +23,7 @@ export const AuthPage = (props) => {
             <form
                 onSubmit={e => formHadler(e)}
                 className='auth-form '>
-                    <span></span>
+                <span></span>
                 <input
                     className={'authInput'}
                     placeholder={'Емейл'}
@@ -49,92 +52,40 @@ export const AuthPage = (props) => {
                     <button
                         className='reg-btn'
                         disabled={isFetching}
-                        onClick={() => setModal(true)}
+                        onClick={() => setRegisterModal(true)}
                     >
                         Регистрация
                 </button>
+                    <button
+                        className={'forgetButton'}
+                        onClick={()=>setRestoreModal(true)}
+                    >
+                        Я забыл пароль
+                    </button>
                 </div>
             </form>
             <pre className='message'>{message}</pre>
 
             {
-                showModal
+
+                showRegisterModal
                 &&
-                <div className={'regModalBackground'}>
+                <RegistartionForm
+                    setRegisterModal={setRegisterModal}
+                    formHandler={formHandler}
+                    registrationHandler={registrationHandler}
+                    isFetchin={isFetching}
+                />
+            }
 
+            {
+                showRestoreModal
+                &&
+                <RestoreAccount
+                    setRestoreModal={setRestoreModal}
+                    sendPassToMail={props.sendPassToMail}
+                />
 
-
-                    <div className={'regModal'}>
-
-                        <button
-                            className='closeModal'
-                            onClick={() => setModal(false)}
-                        >
-                            x
-                    </button>
-                        <span>Е-мейл</span>
-                        <input
-                            className={'authInput'}
-                            id='mail'
-                            type='email'
-                            name='email'
-                            onChange={formHandler}
-                            placeholder='email'
-                        />
-                        <span>Пароль</span>
-                        <input
-                            className={'authInput'}
-                            id={'pass'}
-                            type='password'
-                            name={'password'}
-                            onChange={formHandler}
-                            placeholder='password'
-                        />
-                        <span>Название СТО</span>
-                        <input
-                            type='text'
-                            name='workplaceName'
-                            className={'authInput'}
-                            onChange={formHandler}
-                            placeholder='Рога и копыта'
-                        />
-                        <span>Процент от работ(числом)</span>
-                        <input
-                            type='number'
-                            name='percentLevel'
-                            className={'authInput'}
-                            onChange={formHandler}
-                            placeholder='40% 50% 60%'
-                        />
-
-                        <span>Выплантая неделя</span>
-                        <select
-                            type='select'
-                            name='paymentRange'
-                            className={'authInput'}
-                            onChange={formHandler}
-                            
-                        >
-                            <option name={'пн'}>пн-сб</option>
-                            <option name={'вт'}>вт-пн</option>
-                            <option name={'ср'}>ср-вт</option>
-                            <option name={'чт'}>чт-ср</option>
-                            <option name={'пт'}>пт-чт</option>
-                            <option name={'сб'}>сб-пн</option>
-
-                        </select>
-                        <button
-                            className='reg-btn'
-                            disabled={isFetching}
-                            onClick={() => { registrationHandler(); setModal(false) }}
-                        >
-                            Зарегистрироваться
-                        </button>
-
-
-                    </div>
-
-                </div>
             }
         </div>
 
