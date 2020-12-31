@@ -1,0 +1,48 @@
+.monthsContainer{
+    width: 70%;
+    font-family: sans-serif;
+    margin: 10px auto;
+    background: linear-gradient(133deg, #2d0262 29%, transparent);
+    border-radius: 9px;
+    color: #ffffff;
+    border: 1px solid;
+    padding: 6px;
+    box-shadow: 0px 5px 16px -1px #000000;
+}
+.title{
+    border-bottom: 1px solid #d3b300;
+    color: darkseagreen;
+    margin: 15px;
+}
+.listItem{
+    list-style: none;
+    background: #b05006;
+    display: inline-block;
+    position: relative;
+    margin: 5px 6px;
+    /* width: 200px; */
+    padding: 3px;
+    box-shadow: 0px 0px 4px 0px inset #ffffff, 0px 2px 4px -1px black;
+    border-radius: 6px;
+    border: 1px solid #7c7c7c;
+    z-index: 10;
+
+}
+.carCount{
+    color: #ffffff;
+    border-radius: 50%;
+    text-shadow: 2px -1px 2px black, -2px -1px 2px black;
+    background: linear-gradient(230deg, #14c9b3 16%, transparent 90%);
+    border: 1px solid #828282;
+    width: 17px;
+    text-align: center;
+    height: 17px;
+    font-size: 11px;
+    vertical-align: super;
+    font-family: monospace;
+    position: absolute;
+    display: inline-block;
+    line-height: 20px;
+    right: -8px;
+    top: -8px;
+}

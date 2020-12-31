@@ -1,11 +1,11 @@
-.modal{
+
+.okModal, .falseModal{
     width: 60vw;
     display: flex;
     flex-direction: column;
     align-items: center;
     color: #ffffff;
     min-height: 5em;
-    background-color: #e55306;
     position: absolute;
     border-radius: 0.4em;
     border: 2px solid #4d4d4d;
@@ -14,6 +14,17 @@
     left: 50%;
     transform: translate(-50%,-50%);
 }
+.okModal{
+    background-color: rgb(107, 218, 23);
+    color: black;
+    text-shadow: none;
+}
+
+.falseModal{
+    background-color: #e55306;
+
+}
+
 .title{
     font-size: 15px;
     line-height: 21px;
@@ -26,7 +37,7 @@
     margin-bottom: 25px;
 }
 .title, .content{
-    text-shadow: 1px 1px 2px #000000;
+    text-shadow: 1px 1px 4px #000000;
 }
 .modalBtnContainer{
     display: flex;

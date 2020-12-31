@@ -98,12 +98,16 @@ router.post('/forgetPass', async (req, res) => {
     try {
         const { email } = req.body;
 
-        // const user = await User.findOne({email});
+        const user = await User.findOne({email});
+        
+        if(!user){
+            return res.status(400).json({message: 'Пользователь не найден'})
+        }
 
         const token = jwt.sign(
             { email },
             config.get('secretJWTKey'),
-            { expiresIn: '1h' }
+            { expiresIn: `${config.get('restoreLinkExpr')}h` }
         );
 
         var mailOptions = {
@@ -112,7 +116,7 @@ router.post('/forgetPass', async (req, res) => {
             subject: 'Восстановление пароля',
             html: `${config.get(
                 process.env.NODE_ENV === 'production' ? 'restorePathProd' : 'restorePathDev'
-            )}/${token}`,
+            )}/${token}  ссылка доступна в течении ${config.get('restoreLinkExpr')} часа`,
         };
 
         transporter.sendMail(mailOptions, (err, info) => {

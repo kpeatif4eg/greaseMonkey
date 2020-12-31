@@ -23,7 +23,7 @@ export const Router = (props) => {
                <Route path='/restore/:token'>
                    <RestorePass/>
                </Route>
-               
+
                 <Route path='/'  >
                     <Redirect to='/' />
                 </Route>
@@ -31,7 +31,7 @@ export const Router = (props) => {
              {
                 (props.isShowModal || props.isShowInfoModal)
                 && <ModalContainer 
-                    {...props.message}
+                    {...props}
                     message={props.logoutMessage ||props.infoMessage}
                     okButton={!props.infoMessage && props.okHandler}
                 />
@@ -61,7 +61,7 @@ export const Router = (props) => {
                 {
                     (props.isShowModal || props.isShowInfoModal)
                     && <ModalContainer 
-                        {...props.message}
+                        {...props}
                         message={props.logoutMessage ||props.infoMessage}
                         okButton={!props.infoMessage && props.okHandler}
                     />

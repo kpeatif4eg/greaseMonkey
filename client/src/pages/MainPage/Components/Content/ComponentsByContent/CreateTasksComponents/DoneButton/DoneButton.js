@@ -17,16 +17,6 @@ export const DoneButton =props => {
         
         </button>
 
-
-        {/* //// */}
-        <button onClick={
-            ()=>{
-                fetch('/api/user/testEmail')
-            }
-        }>TEST</button>
-        {/* /// */}
-
-
         {
             isShowModal && <Modal message={messageForModal} description={descriptionforModal} okButton={()=>hideModal()} />
         }

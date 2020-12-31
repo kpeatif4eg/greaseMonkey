@@ -1,7 +1,9 @@
 import React, { useEffect,useState} from 'react';
 import { HistoryComponent } from './HistoryComponents/HistoryComponent';
 import { connect } from 'react-redux';
-import { getTasks, updateTask, getTaskById, settingHistoryDetails, } from '../../../../../../store/actions';
+import { getTasks, updateTask, getTaskById, settingHistoryDetails,
+    // getTasksByMonth
+} from '../../../../../../store/actions';
 
 
 const HistoryContainer = props => {
@@ -26,6 +28,7 @@ const mapState = state => ({
 });
 
 const mapDispatch = dispatch => ({
+    // getTasksByMonth: () => dispatch(getTasksByMonth()),
     getTasks: param => dispatch(getTasks(param)),
     updateTask: task => dispatch(updateTask(task)),
     getTaskById: id => dispatch(getTaskById(id)),

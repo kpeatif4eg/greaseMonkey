@@ -17,6 +17,7 @@ import {
     sendingChoosedTasks,
     getTasks,
     getTaskById,
+    getTasksByMonth,
 } from './asyncActions/asyncTasks';
 
 import { settingAutomobileList, settingMark, setMark, setModel } from './automobileActions';
@@ -92,4 +93,5 @@ export {
     setTaskMenuTitle,
     sendEmail,
     updatePassword,
+    // getTasksByMonth
 };

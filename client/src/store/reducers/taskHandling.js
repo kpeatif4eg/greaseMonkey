@@ -1,3 +1,4 @@
+
 import {
     SET_INIT_TASKLIST,
     START_REQUEST,
@@ -5,7 +6,7 @@ import {
     ERROR_REQUEST,
     SET_TASK_OPTIONS,
     SET_FINAL_TASK,
-    GET_DONE_TASKS,
+    // GET_DONE_TASKS,
 } from '../actionTypes'
 
 

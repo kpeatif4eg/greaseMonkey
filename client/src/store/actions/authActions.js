@@ -9,6 +9,6 @@ import {
 export const logoutModal = message => ({type: SHOW_MODAL_LOGOUT, payload: message}) 
 export const logoutCloseModal = () => ({type: HIDE_MODAL_LOGOUT});
 
-export const infoModal = message => ({type: SHOW_MODAL_INFO, payload: message}) 
+export const infoModal = (message, isOk) => ({type: SHOW_MODAL_INFO, payload: {message ,isOk}}) 
 export const infoCloseModal = () => ({type: HIDE_MODAL_INFO});
 

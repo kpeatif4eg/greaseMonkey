@@ -9,13 +9,14 @@ const updateTaskRoute = require('./updateTask');
 const getTaskByIdRoute = require('./getTaskById');
 const initialTaskskRoute = require('./initialTasks');
 const getWeekInfo = require('./getFullWeekInfo');
+const getMonthInfo = require('./getFullMonthInfo')
 
 const router = Router();
 
 
 
-router.post('/createTask', authMdlw, (req, res)=> createTaskRoute(req, res))
 
+router.post('/createTask', authMdlw, (req, res)=> createTaskRoute(req, res))
 
 router.post('/getTask', authMdlw, (req,res) => getTaskRoute(req,res));
 
@@ -28,6 +29,8 @@ router.post('/getTaskById', authMdlw, (req, res) => getTaskByIdRoute(req, res));
 router.get('/init', authMdlw, (req, res) => initialTaskskRoute(req, res));
 
 router.post('/getDetailsPerRange', authMdlw, (req,res) => getWeekInfo(req,res));
+
+router.get('/getTasksPerMonth', authMdlw, (req,res)=> getMonthInfo(req,res));
 
 module.exports = router;
 

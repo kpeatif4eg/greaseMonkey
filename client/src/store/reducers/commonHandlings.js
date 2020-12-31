@@ -11,7 +11,7 @@ const initState  = {
     isShowModalGlob: false,
     message: 'Пустые поля',
     description: 'Надо выбрать работы',
-    
+    isOk: false,
     infoMessage: null,
     infoShow: false,
 
@@ -30,7 +30,7 @@ export const global = (state = initState, action) => {
             return {...state, isShowModalGlob: false};
 
         case SHOW_MODAL_INFO:
-            return {...state, infoMessage: payload, infoShow: true,}
+            return {...state, infoMessage: payload.message, isOk:payload.isOk, infoShow: true,}
 
         case HIDE_MODAL_INFO:
             return {...state, infoMessage: null, infoShow: false}

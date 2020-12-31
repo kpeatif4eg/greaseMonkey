@@ -106,3 +106,6 @@
     padding: 3px;
     box-sizing: content-box;
 }
+button:disabled{
+    background-color: burlywood;
+}

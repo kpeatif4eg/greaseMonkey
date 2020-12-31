@@ -1,4 +1,4 @@
-const {Router} = require('express');
+const { Router } = require('express');
 const bcrypt = require('bcryptjs');
 const User = require('../../models/User');
 const authMdlw = require('../../middleware/auth.middleware');
@@ -7,57 +7,75 @@ const config = require('config');
 
 const router = Router();
 
-router.post('/getUserInfo', authMdlw ,async(req, res)=>{
-    try{
+router.post('/getUserInfo', authMdlw, async (req, res) => {
+    try {
 
         const userInfo = await User.findById(req.user.userId);
-        
-        return res.status(200).json({user:userInfo})
 
-    } catch(e) {
+        return res.status(200).json({ user: userInfo })
+
+    } catch (e) {
         console.log(e)
     }
 });
 
 
 
-router.put('/updateUserInfo', authMdlw, async (req,res)=>{
-    try{
-        const {data} = req.body;
-        
-        if(!data.email){
+router.put('/updateUserInfo', authMdlw, async (req, res) => {
+    try {
+        const { data } = req.body;
+        let user = await User.findOne({ _id: req.user.userId });
+
+
+        if (!data.email) {
             delete data.email;
         } else {
-            const candidate = await User.findOne({email: data.email});
-
-            if(candidate && candidate.email !== data.email){
-                return res.status(400).json({message: 'Емейл уже спользуется'})
+            const candidate = await User.findOne({ email: data.email });
+            if (candidate && (candidate.email !== user.email)) {
+                if (candidate.email === data.email) {
+                    return res.status(400).json({ message: 'Емейл уже спользуется' })
+                }
             }
+            
         }
-       
 
-        let user = await User.findOne({_id: req.user.userId});
+        if (data.isEditPass) {
+            
+     
 
-        if(data.passWord && bcrypt.compare(data.passWord, user.password)){
-            if(data.pass1===data.pass2){
+
+        if ((!!data.pass1 && !!data.pass2) && data.pass1 === data.pass2) {
+            if (!data.passWord) {
+                return res.status(400).json({ message: 'Неверный пароль' });
+            }
+
+            const isDiff = await bcrypt.compare(data.passWord, user.password);
+
+            if (data.passWord && isDiff) {
+                //data.password соответствует свойству password в БД
                 data.password = await bcrypt.hash(data.pass2, config.get('salt'));
 
+            } else {
+                res.status(400).json({ message: 'Неверный пароль' })
             }
+        } else {
+            res.status(400).json({ message: 'Пароли не совпадают' })
         }
-        delete data.pass1; 
+    }
+        delete data.pass1;
         delete data.pass2;
         delete data.passWord;
 
         // user = {...user, ...data,};
-        await user.updateOne({...data});
+        await user.updateOne({ ...data });
 
 
-        return res.status(200).json({message: 'Данные успешно изменены'})
+        return res.status(200).json({ message: 'Данные успешно изменены' })
         // await User.findOneAndUpdate({ _id: req.user.userId },{...data}, {new: true});
 
 
 
-    } catch(e){
+    } catch (e) {
         console.log(e, 'errorUpdateUser')
     }
 })

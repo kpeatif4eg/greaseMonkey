@@ -51,7 +51,10 @@ export const MainPageModal = props => {
                 />
                 <label>
                     <span className={stl.title}>Изменить пароль</span>
-                    <input type='checkbox' onClick={() => setShowInputs(!isShowPassInputs)} />
+                    <input name='isEditPass' type='checkbox' onClick={(e) => {
+                            setShowInputs(!isShowPassInputs);
+                            props.changeUserInfo({ key: e.target.name, value: e.target.checked })
+                        }} />
                 </label>
                 {
                     isShowPassInputs
@@ -95,7 +98,7 @@ export const MainPageModal = props => {
                 </button>
                 <button
                     className={`btn`}
-                    onClick={() => { props.saveNewInfo(user) }}
+                    onClick={() => {  console.log(user); props.saveNewInfo(user) }}
                     disabled={!comparePass()}
                 >
                     Сохранить

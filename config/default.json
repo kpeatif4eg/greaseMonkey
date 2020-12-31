@@ -8,6 +8,7 @@
     "projMail": "mihaker011@ukr.net",
     "projMailPass": "bG6j2OiNpX4cYyja",
     "restorePathDev": "http://localhost:3000/restore",
-    "restorePathProd":"http://grmonkey.site/restore"
+    "restorePathProd":"http://grmonkey.site/restore",
+    "restoreLinkExpr": 1
     
 }

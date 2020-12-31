@@ -33,4 +33,6 @@ export const updateUserInfo = idAndData => httpRequest.put('/user/updateUserInfo
 
 export const getWorkDaysPerRange = dayRange => httpRequest.post('/task/getDetailsPerRange', { data: dayRange });
 
-export const rewritePass = ({pass, token}) => httpRequest.post('auth/restorePass', {data: {pass, token}})
+export const rewritePass = ({pass, token}) => httpRequest.post('auth/restorePass', {data: {pass, token}});
+
+export const getTasksWithMonth = () => httpRequest.get('/task/getTasksPerMonth')

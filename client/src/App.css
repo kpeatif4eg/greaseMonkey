@@ -66,6 +66,13 @@ ol ,ul{
 .modalBottom{
     font-size: 13px;
 }
+
+button:disabled{
+    transition: .3s;
+    background-color: thistle !important; 
+    box-shadow: 1px 1px 10px -5px #000000;
+}
+
 @keyframes fadeModal{
     0%{
         opacity: 0;

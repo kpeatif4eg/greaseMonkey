@@ -30,8 +30,7 @@ const RouterContainer = props => {
             
             if(resolve.data.message){
             // если ответ содержит свойство 'message' выбрасываем модалку с сообщением
-
-                props.infoModal(resolve.data.message)
+                props.infoModal(resolve.data.message, true)
 
                 setTimeout(() => {
                     props.infoCloseModal()
@@ -42,7 +41,7 @@ const RouterContainer = props => {
         err=>{
 
             if(err.response.data.message){
-                props.infoModal(err.response.data.message);
+                props.infoModal(err.response.data.message, false);
 
                 setTimeout(() => {
                     props.infoCloseModal()
@@ -76,7 +75,7 @@ const mapDispatch = dispatch => ({
     logout: () => dispatch(logout()),
     logoutShowModal: message => dispatch(logoutModal(message)),
     logoutHideModal: () => dispatch(logoutCloseModal()),
-    infoModal: message => dispatch(infoModal(message)),
+    infoModal: (message, isOk) => dispatch(infoModal(message, isOk)),
     infoCloseModal: () => dispatch(infoCloseModal())
 })
 const mapState = state => ({
@@ -84,7 +83,8 @@ const mapState = state => ({
     isShowModal: state.auth.isModal,
     logoutMessage: state.auth.modalMsg.message,
     isShowInfoModal: state.global.infoShow,
-    infoMessage: state.global.infoMessage
+    infoMessage: state.global.infoMessage,
+    isOk: state.global.isOk,
 })
 
 export default connect(mapState, mapDispatch)(RouterContainer)
