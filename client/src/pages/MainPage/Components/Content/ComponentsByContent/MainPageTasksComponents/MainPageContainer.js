@@ -5,6 +5,7 @@ import {gettingUserInfo} from '../../../../../../store/actions'
 
 const MainPageContainer = props => {
     useEffect(()=>{
+        debugger
         props.getUserInfo()
     },[])
     return <MainPage {...props}/>

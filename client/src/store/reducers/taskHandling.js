@@ -18,6 +18,7 @@ const initState = {
     maintain:{},
     attachmentEquip:{},
     diagnostic:{},
+    customTask:{},
     choosedTasks: { notRecurse: true },
     error: null,
     isFetching: false,
@@ -36,6 +37,7 @@ export const tasks = (state = initState, action) => {
                     maintain: payload.maintainTasksGlobal,
                     attachmentEquip: payload.attachmentsEquipmentGlobal,
                     diagnostic: payload.diagnosticTasksGlobal,
+                    customTask: payload.customTaskGlobal,
                     error: null,
                 };
 

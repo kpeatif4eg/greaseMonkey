@@ -1031,6 +1031,22 @@ const tasksForList = {
                 },
             ]
         },
+    },
+    customTaskGlobal:{
+        customTask:{
+            area: 'Ручной ввод',
+            tasks: [
+                {
+                    title: 'Заголовок',
+                    isAdd:true,
+                    sides: [
+                        { side: { name: '', value: '', isChecked: false, cost: '' } },
+                    ]
+                }
+            ]
+       } 
+
     }
+    
 }
 module.exports = tasksForList;

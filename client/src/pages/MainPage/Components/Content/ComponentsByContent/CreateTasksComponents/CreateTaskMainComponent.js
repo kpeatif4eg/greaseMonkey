@@ -6,6 +6,7 @@ import TransmissionContainer from './AddTask/TransmissionContainer';
 import MaintainContainer from './AddTask/MaintainTasksComponent';
 import AttachmentEquip from './AddTask/AttachmentEquipContainer';
 import DiagnosticContainer from './AddTask/DiagnosticTaskComponent';
+import CustomContainer from './AddTask/CustomTaskContainer';
 import { TaskTypeMenu } from './TaskTypeMenu/TaskTypeMenu';
 import SetCarContainer from './SetAutomobileComponent/SetCarContainer';
 import DoneButton from './DoneButton/DoneButtonContainer';
@@ -22,6 +23,7 @@ export const CreateTaskMainComponent = props => {
         { title: 'Трансмиссия', path: '/transmission' },
         { title: 'Доп. оборудование', path: '/addition-equip' },
         { title: 'Диагностика', path: '/diagnostic' },
+        { title: 'Ручной ввод', path: '/customInput' },
     ];
     return (<>
         <div className={stl.topContainer}>
@@ -79,6 +81,12 @@ export const CreateTaskMainComponent = props => {
                 <Route path={`${localPath}/diagnostic`}>
 
                     <DiagnosticContainer />
+
+                </Route>
+
+                <Route path={`${localPath}/customInput`}>
+
+                    <CustomContainer />
 
                 </Route>
             </Switch>
