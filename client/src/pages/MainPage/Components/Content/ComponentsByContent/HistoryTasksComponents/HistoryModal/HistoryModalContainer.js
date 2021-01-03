@@ -16,7 +16,8 @@ import {
     delHistSubwork,
     delHistTask,
     updateTask,
-    deleteTask
+    deleteTask,
+    setHistDate
 } from '../../../../../../../store/actions';
 
 
@@ -49,7 +50,8 @@ const mapDispatch = dispatch => ({
     delSide: id => dispatch(delHistSide(id)),
     delTask: id => dispatch(delHistTask(id)),
     updateTask: taskAndId => dispatch(updateTask(taskAndId)),
-    deleteTask: id => dispatch(deleteTask(id))
+    deleteTask: id => dispatch(deleteTask(id)),
+    setHistDate: date =>dispatch(setHistDate(date))
 })
 
 export default connect(mapState, mapDispatch)(HistoryModalContainer)

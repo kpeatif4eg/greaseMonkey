@@ -29,6 +29,9 @@ export const historyModal = (state = initState, action) => {
     const { payload, type } = action;
     switch (type) {
 
+        case H_SET_DATE:
+            return {...state, taskForChange:{...state.taskForChange,  date: payload}}
+
         case SET_TASK_FOR_CHANGE:
             return { ...state, taskForChange: payload };
 

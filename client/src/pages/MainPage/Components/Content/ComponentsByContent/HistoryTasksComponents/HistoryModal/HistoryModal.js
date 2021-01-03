@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { v4 } from 'uuid';
 import { HistoryItem } from '../HistoryComponents/HistoryByDay/HistoryItem';
+import moment from 'moment';
 import ModalContainer  from '../../../../Modal/ModalContainer'
 import stl from './HistoryModal.module.css';
 
@@ -9,16 +10,27 @@ export const HistoryModal = props => {
     const [isShowModal, setShowModal] = useState(false);
 
     const { taskForChange } = props;
+
+    const updateHandler = () =>{
+        props.updateTask(
+            {
+                id: taskForChange._id,
+                task: taskForChange.tasks.data,
+                date:taskForChange.date,
+            }
+        ) 
+    }
     return <>
         {taskForChange
             &&
             <div className={`modalWrapper fade`}>
                 <div className={`modalContainer`}>
                     <div className={'headNav'}>
+                        <input type='date' onChange={(e)=> props.setHistDate(e.target.value)} defaultValue={moment(taskForChange.date).format('YYYY-MM-DD')}/>
                         <button onClick={() => props.clearTaskForChange(null)}>Закрыть</button>
                         <span className={stl.costNav}>{taskForChange.tasks.data.totalCost + ' грн'}</span>
                         <button
-                            onClick={() => { props.updateTask({ id: taskForChange._id, task: taskForChange.tasks.data }) }} >
+                            onClick={updateHandler} >
                             Сохр.
                         </button>
                         <button onClick={() => setShowModal(true)}> Удалить </button>

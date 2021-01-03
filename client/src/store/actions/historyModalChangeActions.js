@@ -52,6 +52,7 @@ const setUpdateResp = res => ({type:H_UPDATE_RESP, payload: res});
 
 export const updateTask = task => {
     return dispatch => {
+        debugger
         updateTaskAPI(task)
         .then(res => dispatch(setUpdateResp(res.data)))
     }

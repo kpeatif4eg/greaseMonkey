@@ -13,12 +13,12 @@ import {
 const initState = {
     chassis: {},
     engine: {},
-    transmission:{},
+    transmission: {},
     electrical: {},
-    maintain:{},
-    attachmentEquip:{},
-    diagnostic:{},
-    customTask:{},
+    maintain: {},
+    attachmentEquip: {},
+    diagnostic: {},
+    customTask: {},
     choosedTasks: { notRecurse: true },
     error: null,
     isFetching: false,
@@ -28,18 +28,19 @@ const initState = {
 export const tasks = (state = initState, action) => {
     const { type, payload } = action;
     switch (type) {
-        
+
         case SET_INIT_TASKLIST:
-            return { ...state,
-                    chassis: payload.chassisTasksGlobal,
-                    engine: payload.engineTasksGlobal,
-                    transmission: payload.transmissionTasksGlobal,
-                    maintain: payload.maintainTasksGlobal,
-                    attachmentEquip: payload.attachmentsEquipmentGlobal,
-                    diagnostic: payload.diagnosticTasksGlobal,
-                    customTask: payload.customTaskGlobal,
-                    error: null,
-                };
+            return {
+                ...state,
+                chassis: payload.chassisTasksGlobal,
+                engine: payload.engineTasksGlobal,
+                transmission: payload.transmissionTasksGlobal,
+                maintain: payload.maintainTasksGlobal,
+                attachmentEquip: payload.attachmentsEquipmentGlobal,
+                diagnostic: payload.diagnosticTasksGlobal,
+                customTask: payload.customTaskGlobal,
+                error: null,
+            };
 
         case START_REQUEST:
             return { ...state, isFetching: true };
@@ -59,69 +60,87 @@ export const tasks = (state = initState, action) => {
             const mainTypeSystem = payload.mainSystem;
             const isSubsSides = payload.isSubSides;
             const isRadio = payload.radio && payload.radio;
-            const clear = payload.clear && payload.clear; 
-            return {
-                
-                ...state,
-                [mainTypeSystem]: {
-                    ...state[mainTypeSystem],
+            const clear = payload.clear && payload.clear;
+            debugger
+            if (mainTypeSystem === 'customTask') {
 
-                    [typeSystem]: {
-                        ...state[mainTypeSystem][typeSystem],
-                        tasks: state[mainTypeSystem][typeSystem].tasks.map(item => {
-                            if (item.id === id) {
+                // return{
+                //     ...state,
+                //     [mainTypeSystem]: {
+                //         state[mainTypeSystem]:
+                //     }
+                // }
 
-                                if (cost) {
-                                    return { ...item, cost }
-                                }
-                                if(isRadio && !clear){
-                                    return {...item, sides: item.sides.map(radioItem=>{
-                                        if (radioItem.id === sideId) {
-                                            return {...radioItem, side:{...radioItem.side, isChecked}}
+            } else {
+
+                return {
+
+                    ...state,
+                    [mainTypeSystem]: {
+                        ...state[mainTypeSystem],
+
+                        [typeSystem]: {
+                            ...state[mainTypeSystem][typeSystem],
+                            tasks: state[mainTypeSystem][typeSystem].tasks.map(item => {
+                                if (item.id === id) {
+
+                                    if (cost) {
+                                        return { ...item, cost }
+                                    }
+                                    if (isRadio && !clear) {
+                                        return {
+                                            ...item, sides: item.sides.map(radioItem => {
+                                                if (radioItem.id === sideId) {
+                                                    return { ...radioItem, side: { ...radioItem.side, isChecked } }
+                                                }
+                                                return { ...radioItem, side: { ...radioItem.side, isChecked: false } }
+                                            })
                                         }
-                                        return {...radioItem, side:{...radioItem.side, isChecked: false}}
-                                    })}
-                                } else if(isRadio && clear){
-                                    return {...item, sides: item.sides.map(radioItem=>{
-                                            return {...radioItem, side:{...radioItem.side, isChecked: false}}
-                                        
-                                    })}
-                                }
-                                return {
-                                    ...item, sides: item.sides.map(subItem => {
-                                        if (subItem.side.name === name) {
-                                            return { ...subItem, side: { ...subItem.side, isChecked } }
+                                    } else if (isRadio && clear) {
+                                        return {
+                                            ...item, sides: item.sides.map(radioItem => {
+                                                return { ...radioItem, side: { ...radioItem.side, isChecked: false } }
+
+                                            })
                                         }
+                                    }
+                                    return {
+                                        ...item, sides: item.sides.map(subItem => {
+                                            if (subItem.side.name === name) {
+                                                return { ...subItem, side: { ...subItem.side, isChecked } }
+                                            }
 
-                                        if (isSubsSides) {
+                                            if (isSubsSides) {
 
-                                            return {
-                                                ...subItem,
-                                                side: {
-                                                    ...subItem.side,
-                                                    subSides: subItem.side.subSides && subItem.side.subSides.map(subSubItem => {
-                                                        if (subSubItem.name === name && subItem.id === sideId) {
+                                                return {
+                                                    ...subItem,
+                                                    side: {
+                                                        ...subItem.side,
+                                                        subSides: subItem.side.subSides && subItem.side.subSides.map(subSubItem => {
+                                                            if (subSubItem.name === name && subItem.id === sideId) {
 
-                                                            return { ...subSubItem, isChecked: isChecked }
-                                                        }
-                                                        return { ...subSubItem }
-                                                    })
+                                                                return { ...subSubItem, isChecked: isChecked }
+                                                            }
+                                                            return { ...subSubItem }
+                                                        })
+                                                    }
                                                 }
                                             }
-                                        }
-                                        return { ...subItem }
-                                    })
+                                            return { ...subItem }
+                                        })
+                                    }
                                 }
-                            }
-                            return { ...item };
-                        })
-                    }
+                                return { ...item };
+                            })
+                        }
 
-                }
-            };
-        case SET_FINAL_TASK: 
-            return {...state, choosedTasks: {...state.choosedTasks, ...payload}}
-        
+                    }
+                };
+
+            }
+        case SET_FINAL_TASK:
+            return { ...state, choosedTasks: { ...state.choosedTasks, ...payload } }
+
         // case GET_DONE_TASKS:
         //     return {...state, doneTasks: payload };
 

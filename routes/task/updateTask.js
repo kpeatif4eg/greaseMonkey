@@ -6,7 +6,7 @@ module.exports = async (req, res) => {
         
         const updatedTask = await Task.findOneAndUpdate(
             { _id: req.body.data.id },
-            { $set: { tasks: { data: req.body.data.task } } },
+            { $set: { tasks: { data: req.body.data.task }, date:req.body.data.date } },
             { strict: false, new: true }
         );
 

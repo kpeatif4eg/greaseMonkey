@@ -39,7 +39,6 @@ const RouterContainer = props => {
             return resolve
         },
         err=>{
-            debugger
             if(err.response.data.message && err.response.status !== 401){
                 props.infoModal(err.response.data.message, false);
 
@@ -49,7 +48,6 @@ const RouterContainer = props => {
             }
 
         //перехватчик для логаута когда токен закончился
-debugger
             if(err.response && err.response.status === 401){
                 props.logoutShowModal(err.response.data);
             }
