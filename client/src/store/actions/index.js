@@ -8,8 +8,13 @@ import {
     setTaskOptions,
     setTaskForChange,
     setChoosedTasks,
-
-
+    setCustomTitle,
+    setCustomTask,
+    setCustomCost,
+    addCustomTask,
+    addCustomTaskItem,
+    removeCustomTask,
+    removeCustomTaskItem,
 } from './tasksActions';
 
 import {
@@ -93,5 +98,12 @@ export {
     setTaskMenuTitle,
     sendEmail,
     updatePassword,
+    setCustomTitle,
+    setCustomTask,
+    setCustomCost,
+    addCustomTask,
+    addCustomTaskItem,
+    removeCustomTask,
+removeCustomTaskItem
     // getTasksByMonth
 };

@@ -8,7 +8,10 @@ export const AddTaskComponent = props => {
 
 
     for (const key in props) {
-        props[key].tasks
+
+        props[key]
+            &&
+            props[key].tasks
             &&
             componentsList.push(
                 { tasks: props[key].tasks, id: props[key].id, typeOfSystem: key, area: props[key].area }
@@ -19,6 +22,7 @@ export const AddTaskComponent = props => {
         {componentsList.map(item => {
 
             return <TitleComponent
+                {...props}
                 key={item.area}
                 checkboxHandler={checkboxHandler}
                 radioHandler={radioHandler}
@@ -39,6 +43,7 @@ export const AddTaskComponent = props => {
 const TitleComponent = props => {
     const [isOpen, setOpen] = useState(false);
     const { checkboxHandler, radioHandler, costHandler, title, content, typeOfSystem } = props;
+
     return <>
         <div
             className={`${stl.title} ${isOpen && stl.stickyTitle}`}
@@ -50,6 +55,7 @@ const TitleComponent = props => {
             isOpen
             &&
             content.map(item => <ContentComponent
+                {...props}
                 key={item.id}
                 checkboxHandler={checkboxHandler}
                 radioHandler={radioHandler}
@@ -62,6 +68,18 @@ const TitleComponent = props => {
                 typeOfSystem={typeOfSystem}
             />
             )
+        }
+        {
+            props.typeOfSystem === 'custom' && isOpen
+                ?
+                <button
+                    className={stl.customAddTaskBtn}
+                    onClick={() => props.addCustomTask({ id: props.idGen(), sideId: props.idGen() })}
+                >
+                    Добавить работу
+                    </button>
+                :
+                null
         }
     </>
 }
@@ -111,14 +129,35 @@ const ContentComponent = props => {
         return (finalLength.flat().length / length) * 100;
     }
 
-
     return (
         <div className={stl.list} >
-            <span className={stl.listComponent}> {props.listItem} </span>
+            {props.typeOfSystem === 'custom'
+                ?
+                //кастомный ввод
+                <>
+                    <label
+                        className={stl.customTitleLabel}
+                        htmlFor='customTitle'>
+
+                        <input
+                            id='customTitle'
+                            className={stl.customTitle}
+                            placeholder={'Где делаем'}
+                            defaultValue={props.listItem}
+                            onChange={(e) => props.setCustomTitle({ value: e.target.value, id: props.id })}
+                        />
+                    </label>
+                </>
+                //кастомный ввод
+                :
+                <span className={stl.listComponent}> {props.listItem} </span>
+            }
+
             <div className={stl.checkboxContainer}>
                 {
                     props.sides && props.sides.map(item => {
                         return <ContentCheckBoxes
+                            {...props}
                             key={item.id}
                             checkboxHandler={checkboxHandler}
                             radioHandler={radioHandler}
@@ -133,14 +172,42 @@ const ContentComponent = props => {
                     })
 
                 }
+                {
+                    props.typeOfSystem === 'custom'
+                        ?
+                        <button
+                            onClick={() => props.addCustomTaskItem({ id: props.id, sideId: props.idGen() })}
+                            className={stl.customAddTaskItem}
+                        >
+                            Добавить задачу
+                    </button>
+                        :
+                        null
+                }
             </div>
-            <input
-                className={stl.cost}
-                type='number'
-                defaultValue={props.cost}
-                placeholder='$'
-                onChange={(e) => props.costHandler(props, e.target.value)}
-            />
+            {
+                props.typeOfSystem === 'custom'
+                    ?
+
+                    <input
+                        type='number'
+                        className={stl.customCostInput}
+                        placeholder={'0 грн'}
+                        defaultValue={props.cost}
+                        onChange={(e) => props.setCustomCost({ value: e.target.value, id: props.id })}
+                    />
+
+                    :
+                    <div className={stl.costContainer}>
+                        <input
+                            type='number'
+                            className={stl.cost}
+                            defaultValue={props.cost}
+                            placeholder='0 грн'
+                            onChange={(e) => props.costHandler(props, e.target.value)}
+                        />
+                    </div>
+            }
             {
                 props.showBtn ?
                     <div className={stl.buttonBlock}>
@@ -164,6 +231,19 @@ const ContentComponent = props => {
                     :
                     null
             }
+            {
+                typeOfSystem === 'custom'
+                    ?
+                    <button
+                        className={stl.customRemTaskBtn}
+                        onClick={() => props.removeCustomTask({ id: props.id })}
+                    >
+                        Убрать
+                </button>
+                    :
+                    null
+            }
+
         </div>
     )
 }
@@ -202,44 +282,63 @@ const ContentCheckBoxes = props => {
         }, e.target.checked)
     }
 
-
     return (
-        <div >
-            <input
-                onChange={(e) => props.showBtn ? checkBox(e) : radio(e)}
-                id={id}
-                type={props.showBtn ? 'checkbox' : 'radio'}
-                name={props.id}
-                checked={props.isChecked}
-            />
-            <label className={stl.label} htmlFor={id}>
-
-                {props.name}
-            </label>
-            {
-                (props.isChecked && !props.showBtn)
-                &&
-                <button onClick={(e) => clearRadio(e)}>
-                    {'Отменить'}
+        props.typeOfSystem === 'custom'
+            ?
+            //кастомный ввод работы
+            <div className={stl.customTaskItemCont}>
+                <input
+                    className={stl.customTaskTemInput}
+                    type='text'
+                    placeholder={'Что делаем'}
+                    defaultValue={props.name}
+                    onChange={(e) => props.setCustomTask({ value: e.target.value, id: props.id, sideId: props.sideId })}
+                />
+                <button
+                    className={stl.customRemTaskItemBtn}
+                    onClick={() => props.removeCustomTaskItem({ id: props.id, sideId: props.sideId })}
+                >
+                    x
                 </button>
-            }
-            <div className={stl.subList}>
-                {
-                    props.isChecked
-                    &&
-                    props.subSides && props.subSides.map(item => {
-                        return <ContentCheckBoxes
-                            id={props.id}
-                            typeOfSystem={props.typeOfSystem}
-                            sideId={props.sideId}
-                            isChecked={item.isChecked}
-                            name={item.name}
-                            isSubSides={true}
-                            showBtn={props.showBtn}
-                            checkboxHandler={props.checkboxHandler} />
-                    })
-                }
             </div>
-        </div>
+            //кастомный ввод работы
+            :
+            <div >
+                <input
+                    onChange={(e) => props.showBtn ? checkBox(e) : radio(e)}
+                    id={id}
+                    type={props.showBtn ? 'checkbox' : 'radio'}
+                    name={props.id}
+                    checked={props.isChecked}
+                />
+                <label className={stl.label} htmlFor={id}>
+
+                    {props.name}
+                </label>
+                {
+                    (props.isChecked && !props.showBtn)
+                    &&
+                    <button onClick={(e) => clearRadio(e)}>
+                        {'Отменить'}
+                    </button>
+                }
+                <div className={stl.subList}>
+                    {
+                        props.isChecked
+                        &&
+                        props.subSides && props.subSides.map(item => {
+                            return <ContentCheckBoxes
+                                id={props.id}
+                                typeOfSystem={props.typeOfSystem}
+                                sideId={props.sideId}
+                                isChecked={item.isChecked}
+                                name={item.name}
+                                isSubSides={true}
+                                showBtn={props.showBtn}
+                                checkboxHandler={props.checkboxHandler} />
+                        })
+                    }
+                </div>
+            </div>
     )
 }

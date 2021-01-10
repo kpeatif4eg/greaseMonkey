@@ -1033,15 +1033,15 @@ const tasksForList = {
         },
     },
     customTaskGlobal:{
-        customTask:{
+        custom:{
             area: 'Ручной ввод',
             tasks: [
                 {
-                    title: 'Заголовок',
-                    isAdd:true,
+                    title: '',
                     sides: [
-                        { side: { name: '', value: '', isChecked: false, cost: '' } },
-                    ]
+                        { side: { name: '', isChecked: false, cost: '' } },
+                    ],
+                    cost:''
                 }
             ]
        } 
