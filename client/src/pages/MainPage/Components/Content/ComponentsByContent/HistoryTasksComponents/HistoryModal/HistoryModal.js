@@ -26,7 +26,6 @@ export const HistoryModal = props => {
             <div className={`modalWrapper fade`}>
                 <div className={`modalContainer`}>
                     <div className={'headNav'}>
-                        <input type='date' onChange={(e)=> props.setHistDate(e.target.value)} defaultValue={moment(taskForChange.date).format('YYYY-MM-DD')}/>
                         <button onClick={() => props.clearTaskForChange(null)}>Закрыть</button>
                         <span className={stl.costNav}>{taskForChange.tasks.data.totalCost + ' грн'}</span>
                         <button
@@ -36,6 +35,7 @@ export const HistoryModal = props => {
                         <button onClick={() => setShowModal(true)}> Удалить </button>
                     </div>
                     <span style={{ backgroundColor: 'orange' }}>{taskForChange._id}</span>
+                    <input type='date' onChange={(e)=> props.setHistDate(e.target.value)} defaultValue={moment(taskForChange.date).format('YYYY-MM-DD')}/>
 
                     <div>Марка: </div>
                     <input

@@ -17,13 +17,13 @@ export const CreateTaskMainComponent = props => {
     const match = useRouteMatch();
     const localPath = '/newtask'
     const taskTypes = [
-        { title: 'ходовая', path: '/chassis' },
-        { title: 'мотор', path: '/engine' },
+        { title: 'Ручной ввод', special: true, path: '/customInput' },
+        { title: 'Ходовая', path: '/chassis' },
+        { title: 'Мотор', path: '/engine' },
         { title: 'ТО', path: '/technical-servicing' },
         { title: 'Трансмиссия', path: '/transmission' },
         { title: 'Доп. оборудование', path: '/addition-equip' },
         { title: 'Диагностика', path: '/diagnostic' },
-        { title: 'Ручной ввод', path: '/customInput' },
     ];
     return (<>
         <div className={stl.topContainer}>

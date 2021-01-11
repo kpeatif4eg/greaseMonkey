@@ -19,6 +19,7 @@ const Global = props => {
             name: values.name,
             id: values.id,
             isChecked: e,
+            btn:values.btnHandle,
             typeOfSystem: values.typeOfSystem,
             mainSystem: typeOfMainSystem,
             sideId: values.sideId,

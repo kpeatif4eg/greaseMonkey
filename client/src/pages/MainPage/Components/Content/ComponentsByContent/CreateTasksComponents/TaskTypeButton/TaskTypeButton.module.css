@@ -1,4 +1,4 @@
-.button{
+.button, .custom{
     min-width: 5em;
     height: 5em;
     border: 1px solid #7781d3;
@@ -9,11 +9,13 @@
     padding: 0 11px;
     text-overflow: ellipsis;
     border-radius: 0.3em;
-    box-shadow: 0 0 16px -2px #cbcbcb;
+    box-shadow: 0 0 11px -5px #cbcbcb;
     background-color: darkcyan;
-    animation: TaskTypeButton_pulseBtn__3zvKm 2s infinite;
+    animation: pulseBtn 2s infinite;
 }
-
+.custom{
+    background-color: #CCF600	;
+}
 @keyframes pulseBtn {
     0%{
         border: 1px solid #7781d3;

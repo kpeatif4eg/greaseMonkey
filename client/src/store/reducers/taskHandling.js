@@ -67,6 +67,7 @@ export const tasks = (state = initState, action) => {
             const name = payload.name;
             const isChecked = payload.isChecked;
             const cost = payload.cost;
+            const btn = payload.btn;
             const typeSystem = payload.typeOfSystem;
             const mainTypeSystem = payload.mainSystem;
             const isSubsSides = payload.isSubSides;
@@ -106,6 +107,17 @@ export const tasks = (state = initState, action) => {
                                 return {
                                     ...item, sides: item.sides.map(subItem => {
                                         if (subItem.side.name === name) {
+                                            if (subItem.side.subSides && btn) {
+                                                return {
+                                                    ...subItem, side: {
+                                                        ...subItem.side,
+                                                        isChecked,
+                                                        subSides: subItem.side.subSides.map(item => {
+                                                            return { ...item, isChecked }
+                                                        })
+                                                    }
+                                                }
+                                            }
                                             return { ...subItem, side: { ...subItem.side, isChecked } }
                                         }
 

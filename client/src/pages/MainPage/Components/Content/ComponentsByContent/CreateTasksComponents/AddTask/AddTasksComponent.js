@@ -94,7 +94,7 @@ const ContentComponent = props => {
             return
         }
         props.sides.forEach(item => {
-            checkboxHandler({ name: item.side.name, id: props.id, typeOfSystem }, true);
+            checkboxHandler({ name: item.side.name, id: props.id, typeOfSystem, btnHandle: true }, true);
         })
     }
     const uncheckAllSides = () => {
@@ -102,7 +102,7 @@ const ContentComponent = props => {
             return
         }
         props.sides.forEach(item => {
-            checkboxHandler({ name: item.side.name, id: props.id, typeOfSystem }, false);
+            checkboxHandler({ name: item.side.name, id: props.id, typeOfSystem, btnHandle: true }, false);
         })
     }
     const calcSidesLength = () => {
@@ -213,7 +213,7 @@ const ContentComponent = props => {
                     <div className={stl.buttonBlock}>
                         <button
                             style={{
-                                background: `linear-gradient(90deg,darkcyan ${calcSidesLength()}%, transparent 0% )`
+                                background: `linear-gradient(90deg,#6fc248 ${calcSidesLength()}%, transparent 0% )`
                             }}
                             className={stl.checkAll}
                             onClick={checkAllSides}

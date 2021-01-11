@@ -38,23 +38,24 @@
 }
 .costContainer{
     background: #438a8b;
+    box-shadow: -5px 11px 21px 4px black;
 
 }
 .checkboxContainer{
     display: flex;
     flex-direction: column;
     /* grid-template-columns: 1fr 1fr; */
+    padding: 9px;
     width: -moz-fit-content;
     background: linear-gradient(90deg, #2d98c6 34%, transparent 97%);
     width: 100%;
-    border-bottom: 2px solid;
     /* border-left: 1px solid; */
     text-align: left;
     margin-bottom: 0px;
 
 }
 .list{
-    background-color: #c9b912;
+    background-color: #071378;
     padding-left: 1em;
     padding-right: 1em;
     margin-top: .5vh;
@@ -82,12 +83,10 @@
 
 }
 .subList{
-    background-color: #e2c9c9;
-    border-radius: 11%;
+    background-color: #0c31a45e;
+    border-radius: 5%;
     padding: 0 6px;
     text-align: left;
-    border-left: 1px solid darksalmon;
-    border-right: 1px solid darksalmon;
 }
 .listComponent{
     text-align: center;
@@ -115,10 +114,10 @@
 
 } */
 .customCostInput, .customTaskTemInput, .customTitle{
-    background: linear-gradient(-258deg, #2f006c 30%, #88c0c5);
+    background: linear-gradient(-207deg, #2f006c 57%, #08b0bf);
     border-radius: 10px;
-    border: 0;
-    box-shadow: 0px 0px 8px -1px inset #000000;
+    border: 1px solid;
+    box-shadow: 0px 0px 8px -1px inset #000000, 0px 0px 3px 1px #ffffff;
     height: 25px;
     outline: .3em;
     margin-bottom: 3px;
@@ -130,21 +129,28 @@
 .customTaskTemInput{
     /* width: 100%; */
 }
-.customAddTaskItem{
-    background: #00ac38;
+.customAddTaskItem ,.customAddTaskBtn{
+    background: #6737a5;
     font-weight: 900;
-    text-shadow: 1px 1px 3px #dfff00;
+    box-shadow: 0px 0px 5px 3px #ffffff;
+    /* text-shadow: 1px 1px 3px #dfff00; */
     border: 0;
-    color: #000000;
-    border-radius: 7%;
+    color: #ffffff;
+    /* width: auto; */
+    margin-left: auto;
+    position: relative;
+    border-radius: 13px;
     border: 1px solid gray;
+    padding: 6px;
+    top: 40px;
 }
 .customTitle{
     width: 85%
 }
-/* .customAddTaskBtn{
-
-} */
+.customAddTaskBtn{
+    position: static;
+    margin-left: 20px;
+}
 .customRemTaskItemBtn{
     background: linear-gradient(-258deg, #ffffff 30%, #88c0c5);
     border-radius: 32%;
@@ -158,4 +164,5 @@
 }
 .customTitleLabel{
     background: linear-gradient(270deg, #2d98c6 34%, transparent 97%);
+    padding-top: 10px;
 }

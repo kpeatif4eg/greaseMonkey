@@ -9,7 +9,7 @@ export const TaskTypeButton = props => {
         <Link to={match.url+props.path}>
             <button
                 onClick={()=>props.setTopSideName(props.title)} 
-                type='button' className={stl.button}>
+                type='button' className={props.special ? stl.custom : stl.button}>
                 {props.title}
             </button>
         </Link>

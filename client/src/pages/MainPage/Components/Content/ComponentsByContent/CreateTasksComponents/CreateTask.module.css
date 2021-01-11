@@ -40,7 +40,7 @@
     color: rgb(49, 66, 49);
 }
 .topContainer{
-    width: 100%;
+    width: 99.5%;
     display: flex;
     position: sticky;
     align-items: flex-start;
