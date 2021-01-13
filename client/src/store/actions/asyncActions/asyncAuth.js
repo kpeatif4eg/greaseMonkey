@@ -6,7 +6,7 @@ import {
 
 } from '../../actionTypes';
 
-import {httpRequest} from '../../../utils/API'
+import { httpRequest } from '../../../utils/API'
 
 import { startRequest, endRequest, setError } from '../requestState';
 
@@ -67,12 +67,7 @@ export const logout = () => {
 }
 
 export const sendEmail = (email) => {
-    return dispatch=>{
-        httpRequest.post('/auth/forgetPass',{email})
-        .then(res => console.log(res.data))
-        .catch(e=>{
-            console.log(e)
-        })
-
+    return dispatch => {
+        httpRequest.post('/auth/forgetPass', { email })
     }
 }

@@ -98,10 +98,10 @@ router.post('/forgetPass', async (req, res) => {
     try {
         const { email } = req.body;
 
-        const user = await User.findOne({email});
-        
-        if(!user){
-            return res.status(400).json({message: 'Пользователь не найден'})
+        const user = await User.findOne({ email });
+
+        if (!user) {
+            return res.status(400).json({ message: 'Пользователь не найден' })
         }
 
         const token = jwt.sign(
@@ -121,11 +121,8 @@ router.post('/forgetPass', async (req, res) => {
 
         transporter.sendMail(mailOptions, (err, info) => {
             if (err) {
-                console.log(err);
                 res.status(400).json({ message: 'Не удалось отправить ' })
             } else {
-
-                console.log('Email sent: ' + info.response);
                 res.status(200).json({ message: 'Письмо отправлено, проверьте почту ' })
             }
         })
@@ -137,26 +134,25 @@ router.post('/forgetPass', async (req, res) => {
 router.post('/restorePass',
     [check('password', 'Input password').exists()],
     async (req, res) => {
-    try{
+        try {
 
-        const token = req.body.data.token;
-        const newPassword = req.body.data.pass;
-        const parsedToken = await jwt.verify(token, config.get('secretJWTKey'));
-        
-        const cryptedPass = await bcrypt.hash(newPassword, config.get('salt'));
-        console.log(parsedToken)
+            const token = req.body.data.token;
+            const newPassword = req.body.data.pass;
+            const parsedToken = await jwt.verify(token, config.get('secretJWTKey'));
 
-        await User.findOneAndUpdate(
-            { email: parsedToken.email },
-            { $set: { password: cryptedPass } },
-            {strict: false}
-        );
+            const cryptedPass = await bcrypt.hash(newPassword, config.get('salt'));
 
-        return res.status(200).json({message: 'Пароль успешно изменен'})
+            await User.findOneAndUpdate(
+                { email: parsedToken.email },
+                { $set: { password: cryptedPass } },
+                { strict: false }
+            );
+
+            return res.status(200).json({ message: 'Пароль успешно изменен' })
         }
-        catch(e){
-            if(e.message === 'jwt expired'){
-                res.status(404).json({message: 'Ссылка устарела, проведите процедуру заново'})
+        catch (e) {
+            if (e.message === 'jwt expired') {
+                res.status(404).json({ message: 'Ссылка устарела, проведите процедуру заново' })
             }
         }
     })

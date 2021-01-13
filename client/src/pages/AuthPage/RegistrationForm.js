@@ -14,14 +14,14 @@ const {setRegisterModal, formHandler, registrationHandler, isFetching} = props;
                     x
                 </button>
 
-                <span>Е-мейл</span>
+                <span>Эмейл</span>
                 <input
                     className={'authInput'}
                     id='mail'
                     type='email'
                     name='email'
                     onChange={formHandler}
-                    placeholder='email'
+                    placeholder='Эмейл'
                 />
                 <span>Пароль</span>
                 <input
@@ -30,7 +30,7 @@ const {setRegisterModal, formHandler, registrationHandler, isFetching} = props;
                     type='password'
                     name={'password'}
                     onChange={formHandler}
-                    placeholder='password'
+                    placeholder='Не меньше 6 символов'
                 />
 
                 <span>Название СТО</span>

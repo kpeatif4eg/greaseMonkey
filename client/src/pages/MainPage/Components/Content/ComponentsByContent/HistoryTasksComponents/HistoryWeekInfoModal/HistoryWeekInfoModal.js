@@ -5,7 +5,6 @@ import { CarsByWeek } from './CarsByWeekComponent';
 import stl from './HistoryWeekInfoModal.module.css'
 
 export const HistoryWeekDetailsModal = props => {
-    console.log(props)
     const { info, setHistDetail } = props;
     const [isShowDetails, setShowDetails] = useState(false)
     return (

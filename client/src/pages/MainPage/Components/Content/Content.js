@@ -7,7 +7,6 @@ export const ContentPage = props => {
     },[])
     return(
         <>
-        {console.log(props)}
         {props.children}
         
         </>

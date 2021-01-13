@@ -36,42 +36,40 @@ router.put('/updateUserInfo', authMdlw, async (req, res) => {
                     return res.status(400).json({ message: 'Емейл уже спользуется' })
                 }
             }
-            
+
         }
 
         if (data.isEditPass) {
-            
-     
 
 
-        if ((!!data.pass1 && !!data.pass2) && data.pass1 === data.pass2) {
-            if (!data.passWord) {
-                return res.status(400).json({ message: 'Неверный пароль' });
-            }
 
-            const isDiff = await bcrypt.compare(data.passWord, user.password);
 
-            if (data.passWord && isDiff) {
-                //data.password соответствует свойству password в БД
-                data.password = await bcrypt.hash(data.pass2, config.get('salt'));
+            if ((!!data.pass1 && !!data.pass2) && data.pass1 === data.pass2) {
+                if (!data.passWord) {
+                    return res.status(400).json({ message: 'Неверный пароль' });
+                }
 
+                const isDiff = await bcrypt.compare(data.passWord, user.password);
+
+                if (data.passWord && isDiff) {
+                    //data.password соответствует свойству password в БД
+                    data.password = await bcrypt.hash(data.pass2, config.get('salt'));
+
+                } else {
+                    res.status(400).json({ message: 'Неверный пароль' })
+                }
             } else {
-                res.status(400).json({ message: 'Неверный пароль' })
+                res.status(400).json({ message: 'Пароли не совпадают' })
             }
-        } else {
-            res.status(400).json({ message: 'Пароли не совпадают' })
         }
-    }
         delete data.pass1;
         delete data.pass2;
         delete data.passWord;
 
-        // user = {...user, ...data,};
         await user.updateOne({ ...data });
 
 
         return res.status(200).json({ message: 'Данные успешно изменены' })
-        // await User.findOneAndUpdate({ _id: req.user.userId },{...data}, {new: true});
 
 
 

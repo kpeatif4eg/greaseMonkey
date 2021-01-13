@@ -3,8 +3,7 @@ const User = require('../../models/User');
 const moment = require('moment');
 const compareDay = require('../helpers/compareDayNameWithNumber')
 const parseTasksByDate = require('../helpers/tasksHelpers');
-const { json } = require('express');
-const { find } = require('../../models/User');
+
 
 
 
@@ -18,8 +17,6 @@ module.exports = async (req, res) => {
             return res.status(404).json({ message: 'Работ пока нет' })
 
         }
-        console.log(req.body.data)
-
         // DAY HANDLE
 
         if (req.body.data && req.body.data === 'day') {
@@ -147,7 +144,6 @@ module.exports = async (req, res) => {
 
             tasks = await Task.find({ owner: req.user.userId }).sort(({ date: 1 }));
             const user = await User.findOne({ _id: req.user.userId });
-            console.log(user)
             if (!tasks.length) {
                 return res.status(404).json({
                     message: 'Работ пока нет',
@@ -162,7 +158,7 @@ module.exports = async (req, res) => {
 
             const slicedByMonth = [];
 
-            const collectInfoByMonth = tasks.reduce((coll, item, i, arr) => {
+            tasks.reduce((coll, item, i, arr) => {
                 const { tasks, date } = item;
                 const { data } = tasks;
 

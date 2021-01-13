@@ -23,7 +23,7 @@ export const HistoryByMonth = props => {
                 props.doneTasks.payload
                 &&
                 props.doneTasks.type === 'month' && props.doneTasks.payload.map(item =>{
-                    return <MonthItem {...item}/>
+                    return <MonthItem key={item.date}{...item}/>
                 })
             }
 
